@@ -1,4 +1,60 @@
+/* Tailwind v4 core */
 @import "tailwindcss";
 
-@import "aos/dist/aos.css";   /* ⬅️ tambahkan baris ini */
+/* AOS (kalau kamu pakai animasinya) */
+@import "aos/dist/aos.css";
+
+/* UX kecil */
 html { scroll-behavior: smooth; }
+
+/* =============================== */
+/*           Base Styles           */
+/* =============================== */
+@layer base {
+  html { @apply antialiased; }
+  /* Gradasi global lembut (aktif di semua halaman) */
+  body {
+    @apply text-slate-800;
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #ffffff 0%, #EAF9F6 60%, transparent 100%),
+      radial-gradient(900px 500px at 90% 110%, #CCFBF1 0%, #99F6E4 50%, transparent 100%),
+      linear-gradient(180deg, #FFFFFF 0%, #EAF9F6 55%, #CFFAFE 100%);
+    min-height: 100dvh;
+  }
+  ::selection { @apply bg-teal-200 text-slate-900; }
+}
+
+/* =============================== */
+/*     Custom utilities (v4 way)   */
+/* =============================== */
+
+/* Input standar (dipakai ContactPage, dll) */
+@utility field-input {
+  @apply w-full h-11 rounded-xl px-4
+         !bg-[#0b5f5f] text-white placeholder-white/80
+         focus:outline-none focus:ring-2 focus:ring-teal-300/70
+         appearance-none;
+}
+
+/* --- Fix autofill Chrome/Safari yang ngecat putih --- */
+@layer base {
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 1000px #0b5f5f inset;
+    -webkit-text-fill-color: #ffffff;
+    caret-color: #ffffff;
+    transition: background-color 9999s ease-in-out 0s;
+  }
+}
+
+/* (Opsional) Kalau mau bisa ON/OFF per halaman, pakai class ini di wrapper:
+   <div className="site-gradient min-h-screen">…</div> */
+@layer utilities {
+  .site-gradient {
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #ffffff 0%, #EAF9F6 60%, transparent 100%),
+      radial-gradient(900px 500px at 90% 110%, #CCFBF1 0%, #99F6E4 50%, transparent 100%),
+      linear-gradient(180deg, #FFFFFF 0%, #EAF9F6 55%, #CFFAFE 100%);
+  }
+}

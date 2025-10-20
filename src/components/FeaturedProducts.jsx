@@ -1,43 +1,65 @@
-const PRODUCTS = [
-  { id: 1, name: "Sabun Palem",       price: "Rp. xxx.xxx", img: "/jelitoples.jpeg" },
-  { id: 2, name: "Sabun Palem (Bar)", price: "Rp. xxx.xxx", img: "/product.jpg" },
-  { id: 3, name: "Sabun Palem",       price: "Rp. xxx.xxx", img: "/product.jpg" },
-  { id: 4, name: "Sabun Palem",       price: "Rp. xxx.xxx", img: "/product.jpg" },
-];
-
 export default function FeaturedProducts() {
   return (
-    <section id="products" className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-slate-800 text-center" data-aos="fade-up">
-          Produk Unggulan Kami
-        </h2>
-        <p className="text-center text-slate-600 mt-3 mb-10" data-aos="fade-up" data-aos-delay="100">
-          Dipercaya konsumen, terbukti berkualitas.
-        </p>
-
-        <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-2" data-aos="fade-up" data-aos-delay="100">
-          {PRODUCTS.map((p, i) => (
-            <article
-              key={p.id}
-              className="min-w-[260px] max-w-[260px] bg-white rounded-2xl shadow hover:shadow-lg snap-center"
-              data-aos="fade-up"
-              data-aos-delay={150 + i * 100}
+    <>
+      {/* Sabun Palem – teks kiri, gambar kanan */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-14 md:py-18 lg:py-22 grid md:grid-cols-2 gap-10 items-center">
+          <div data-aos="fade-right">
+            <h3 className="text-5xl md:text-6xl font-extrabold tracking-tight text-[#0f6f72]">
+              Sabun Palem
+            </h3>
+            <p className="mt-6 text-slate-600 text-lg leading-relaxed max-w-xl">
+              Produk pembersih rumah tangga dan industri. Melayani pembelian partai besar,
+              makloon &amp; eceran.
+            </p>
+            <a
+              href="/produk#palem"
+              className="mt-8 inline-flex items-center justify-center rounded-xl px-6 py-3 bg-[#19BFB3] text-white font-semibold shadow hover:opacity-90"
             >
-              <div className="p-4">
-                <div className="h-48 rounded-xl bg-slate-100 grid place-items-center overflow-hidden">
-                  <img src={p.img} alt={p.name} className="h-full object-contain" />
-                </div>
-                <p className="mt-3 text-slate-500">{p.price}</p>
-                <h3 className="font-semibold">{p.name}</h3>
-                <a href="#detail" className="inline-block mt-3 bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg">
-                  Lihat Detail
-                </a>
-              </div>
-            </article>
-          ))}
+              Lihat Detail Produk
+            </a>
+          </div>
+
+          <div className="relative" data-aos="fade-left">
+            <img
+              src="/img/jar-palem.png" // ganti sesuai aset
+              alt="Sabun Palem"
+              className="w-[460px] max-w-full mx-auto drop-shadow-2xl rotate-[12deg]"
+              draggable={false}
+            />
+            <div className="absolute inset-x-0 bottom-0 -z-10 h-24 blur-2xl bg-slate-400/30 rounded-full" />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* 3 benefit kiri + foto lineup kanan */}
+      <section className="bg-gradient-to-b from-white via-[#e9fbf8] to-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-12 md:py-16 lg:py-20 grid md:grid-cols-2 gap-10 items-center">
+          <div className="space-y-10">
+            {[
+              { h:"99.9% Lebih Efektif", p:"Bersihkan noda bekas makanan" },
+              { h:"Hilangkan Noda Bandel", p:"Pakaian bersih dalam sekejap" },
+              { h:"Harga Ekonomis", p:"Baju bersih dan wangi" },
+            ].map((b,i)=>(
+              <div key={b.h} data-aos="fade-up" data-aos-delay={i*100}>
+                <p className="text-xl md:text-2xl font-extrabold text-slate-800 drop-shadow-sm">{b.h}</p>
+                <p className="text-slate-600 text-lg mt-1">{b.p}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="relative" data-aos="fade-left">
+            <img
+              src="/public/produkpalem.png"
+              alt="Produk Palem"
+              className="w-[560px] max-w-full mx-auto drop-shadow-2xl"
+              draggable={false}
+            />
+            <div className="absolute -right-6 top-6 w-10 h-10 rounded-full bg-white/70 shadow" />
+            <div className="absolute right-10 -bottom-4 w-16 h-16 rounded-full bg-white/70 shadow" />
+          </div>
+        </div>
+      </section>
+    </>
   );
 }

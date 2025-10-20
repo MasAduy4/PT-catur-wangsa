@@ -2,27 +2,28 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 
+
 /** ====== DATA DUMMY (ganti dengan data asli/API) ====== */
 const ALL_PRODUCTS = [
-  { id: 1,  name: "Sabun Susu Botol Milk",     category: "Sabun Susu Cair", price: 18000, rating: 4.7, img: "/foto/produk1.png",  isTrending: true,  createdAt: "2025-08-01" },
-  { id: 2,  name: "Sabun Susu Botol Avocado",  category: "Sabun Susu Cair", price: 18500, rating: 4.8, img: "/foto/produk2.png",  isTrending: true,  createdAt: "2025-08-02" },
-  { id: 3,  name: "Sabun Susu Botol Honey",    category: "Sabun Susu Cair", price: 18500, rating: 4.6, img: "/foto/produk3.png",  isTrending: false, createdAt: "2025-07-24" },
-  { id: 4,  name: "Sabun Susu Pump Milk",      category: "Sabun Susu Cair", price: 22000, rating: 4.7, img: "/foto/produk4.png",  isTrending: false, createdAt: "2025-07-20" },
-  { id: 5,  name: "Sabun Susu Pump Avocado",   category: "Sabun Susu Cair", price: 23000, rating: 4.9, img: "/foto/produk5.png",  isTrending: true,  createdAt: "2025-09-01" },
-  { id: 6,  name: "Sabun Susu Pump Honey",     category: "Sabun Susu Cair", price: 23000, rating: 4.7, img: "/foto/produk6.png",  isTrending: false, createdAt: "2025-06-30" },
-  { id: 7,  name: "Barsoap Milk",              category: "Barsoap",         price: 6000,  rating: 4.5, img: "/foto/produk7.png",  isTrending: true,  createdAt: "2025-05-10" },
-  { id: 8,  name: "Barsoap Avocado",           category: "Barsoap",         price: 6500,  rating: 4.6, img: "/foto/produk8.png",  isTrending: false, createdAt: "2025-05-11" },
-  { id: 9,  name: "Barsoap Honey",             category: "Barsoap",         price: 6500,  rating: 4.6, img: "/foto/produk9.png",  isTrending: false, createdAt: "2025-05-12" },
-  { id: 10, name: "Lotion Susu Milk",          category: "Lotion",          price: 28000, rating: 4.8, img: "/foto/produk10.png", isTrending: true,  createdAt: "2025-08-15" },
-  { id: 11, name: "Lotion Susu Avocado",       category: "Lotion",          price: 29000, rating: 4.7, img: "/foto/produk11.png", isTrending: false, createdAt: "2025-08-18" },
-  { id: 12, name: "Lotion Susu Honey",         category: "Lotion",          price: 29000, rating: 4.7, img: "/foto/produk12.png", isTrending: false, createdAt: "2025-04-22" },
-  { id: 13, name: "Sabun Susu Pouch Milk",     category: "Sabun Susu Cair", price: 15000, rating: 4.5, img: "/foto/produk13.png", isTrending: false, createdAt: "2025-07-01" },
-  { id: 14, name: "Sabun Susu Pouch Avocado",  category: "Sabun Susu Cair", price: 15500, rating: 4.6, img: "/foto/produk14.png", isTrending: false, createdAt: "2025-07-03" },
-  { id: 15, name: "Sabun Susu Pouch Honey",    category: "Sabun Susu Cair", price: 15500, rating: 4.6, img: "/foto/produk15.png", isTrending: false, createdAt: "2025-07-05" },
-  { id: 16, name: "Gift Set Sabun Susu",       category: "Paket",           price: 52000, rating: 4.9, img: "/foto/produk16.png", isTrending: true,  createdAt: "2025-09-02" },
-  { id: 17, name: "Bundle Barsoap 3pcs",       category: "Paket",           price: 17000, rating: 4.7, img: "/foto/produk17.png", isTrending: false, createdAt: "2025-08-09" },
-  { id: 18, name: "Bundle Cair + Lotion",      category: "Paket",           price: 48000, rating: 4.8, img: "/foto/produk18.png", isTrending: true,  createdAt: "2025-09-05" },
-  { id: 19, name: "Refill Lotion 500ml",       category: "Lotion",          price: 45000, rating: 4.6, img: "/foto/produk19.png", isTrending: false, createdAt: "2025-07-28" },
+  { id: 1,  name: "Fresklin - Softener",         category: "Botol", price: 18000, rating: 4.7, img: "/foto/produk1.png",  isTrending: true,  createdAt: "2025-08-01" },
+  { id: 2,  name: "Clean Up - Detergen Cair ",   category: "Botol", price: 18500, rating: 4.8, img: "/foto/produk2.png",  isTrending: true,  createdAt: "2025-08-02" },
+  { id: 3,  name: "Bomber - Wash dishes ",       category: "Botol", price: 18500, rating: 4.6, img: "/foto/produk3.png",  isTrending: false, createdAt: "2025-07-24" },
+  { id: 4,  name: "Palem - Hand Soap",           category: "Botol", price: 22000, rating: 4.7, img: "/foto/produk4.png",  isTrending: false, createdAt: "2025-07-20" },
+  { id: 5,  name: "Cemara - Pembersih Lantai",   category: "Botol", price: 23000, rating: 4.9, img: "/foto/produk5.png",  isTrending: true,  createdAt: "2025-09-01" },
+  { id: 6,  name: "Cemara - fragrant carbolic",  category: "Botol", price: 23000, rating: 4.7, img: "/foto/produk6.png",  isTrending: false, createdAt: "2025-06-30" },
+  { id: 7,  name: "Bomber - Washing machines",   category: "Detergent Bubuk", price: 6000,  rating: 4.5, img: "/foto/produk7.png",  isTrending: true,  createdAt: "2025-05-10" },
+  { id: 8,  name: "Fres Klin - FK 50",           category: "Detergent Bubuk", price: 6500,  rating: 4.6, img: "/foto/produk8.png",  isTrending: false, createdAt: "2025-05-11" },
+  { id: 9,  name: "Fres Klin - FK 400",          category: "Detergent Bubuk", price: 6500,  rating: 4.6, img: "/foto/produk9.png",  isTrending: false, createdAt: "2025-05-12" },
+  { id: 10, name: "Fres Klin - FK 1.000",        category: "Detergent Bubuk", price: 28000, rating: 4.8, img: "/foto/produk10.png", isTrending: true,  createdAt: "2025-08-15" },
+  { id: 11, name: "Detergent Cream Palem toples",category: "Detergent Cream", price: 29000, rating: 4.7, img: "/foto/produk11.png", isTrending: false, createdAt: "2025-08-18" },
+  { id: 12, name: "Sabun Cream Putih",           category: "Detergent Cream", price: 29000, rating: 4.7, img: "/foto/produk12.png", isTrending: false, createdAt: "2025-04-22" },
+  { id: 13, name: "Sabun Jelly Serba guna",      category: "Detergent Cream", price: 15000, rating: 4.5, img: "/foto/produk13.png", isTrending: false, createdAt: "2025-07-01" },
+  { id: 14, name: "Cemara Pembersih Lantai",     category: "Jerigen 5L", price: 15500, rating: 4.6, img: "/foto/produk14.png", isTrending: false, createdAt: "2025-07-03" },
+  { id: 15, name: "Clean Up Detergen Cair",      category: "Jerigen 5L", price: 15500, rating: 4.6, img: "/foto/produk15.png", isTrending: false, createdAt: "2025-07-05" },
+  { id: 16, name: "Fresklin Softener",           category: "Jerigen 5L", price: 52000, rating: 4.9, img: "/foto/produk16.png", isTrending: true,  createdAt: "2025-09-02" },
+  { id: 17, name: "Palem Handsoap",              category: "Jerigen 5L", price: 17000, rating: 4.7, img: "/foto/produk17.png", isTrending: false, createdAt: "2025-08-09" },
+  { id: 18, name: "Paket",                       category: "Paket", price: 48000, rating: 4.8, img: "/foto/produk18.png", isTrending: true,  createdAt: "2025-09-05" },
+  { id: 19, name: "Paket",                       category: "Paket", price: 45000, rating: 4.6, img: "/foto/produk19.png", isTrending: false, createdAt: "2025-07-28" },
 ];
 
 /** ====== KOMPONEN KARTU PRODUK ====== */

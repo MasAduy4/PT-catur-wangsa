@@ -4,6 +4,8 @@ import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import './index.css';
+
 
 import TopBar from "./components/TopBar";
 import Navbar from "./components/Navbar";
@@ -12,6 +14,8 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ProductsPage from "./pages/ProductsPage";
+import ContactPage from "./pages/ContactPage";
+
 
 /* -------------------- Page transition variants -------------------- */
 const pageVariants = {
@@ -101,8 +105,10 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path="about" element={<AboutPage />} />
           <Route path="produk" element={<ProductsPage />} />
+          <Route path="/kontak" element={<ContactPage />} />
         </Route>
       </Routes>
+
     </>
   );
 }

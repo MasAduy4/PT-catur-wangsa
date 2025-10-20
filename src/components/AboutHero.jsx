@@ -1,62 +1,64 @@
-function WavePattern() {
-    return (
-      <svg
-        className="absolute inset-0 w-full h-full opacity-30 pointer-events-none"
-        xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none"
-        viewBox="0 0 1440 900"
-        aria-hidden="true"
-      >
-        <defs>
-          <pattern id="lines2" width="80" height="80" patternUnits="userSpaceOnUse">
-            <path d="M0 40 Q40 0 80 40 T160 40" fill="none" stroke="white" strokeWidth="1.2"/>
-            <path d="M0 80 Q40 40 80 80 T160 80" fill="none" stroke="white" strokeWidth="1.2"/>
-          </pattern>
-        </defs>
-        <rect width="1440" height="900" fill="url(#lines2)" />
-      </svg>
-    );
-  }
-  
-  export default function AboutHero() {
-    return (
-      <section
-        id="about"
-        className="relative overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #59d3db 0%, #46d2c0 60%, #43cbb6 100%)" }}
-      >
-        <WavePattern />
-  
-        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-16 py-16 md:py-20">
-          <div className="grid md:grid-cols-2 gap-10 items-center">
-            <div className="text-white" data-aos="fade-right">
-              <h1 className="text-[48px] md:text-[64px] leading-[1.05] font-extrabold drop-shadow-sm">
-                Tentang<br />Kami
-              </h1>
-              <p className="mt-6 text-white/95 text-lg max-w-xl">
-                Sejak 1967 menghadirkan kebersihan untuk keluarga Indonesia.
-              </p>
-              <a
-                href="#history"
-                className="mt-10 inline-grid place-items-center w-11 h-11 rounded-full bg-black/15 text-white text-2xl hover:bg-black/25 transition"
-                aria-label="Scroll to history"
-                data-aos="zoom-in"
-                data-aos-delay="150"
-              >
-                ⌄
-              </a>
-            </div>
-  
-            <div className="relative flex justify-center md:justify-end" data-aos="fade-left" data-aos-delay="120">
-              <img
-                src="pabrik.jpg"
-                alt="Pabrik"
-                className="w-[360px] md:w-[520px] rounded-3xl shadow-2xl object-cover"
-              />
-            </div>
+// src/components/Hero.jsx
+import React from "react";
+
+export default function Hero({
+  bgImage = "/gedung.png",
+}) {
+  const bgStyle = {
+    backgroundImage: `url(${bgImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  };
+
+  return (
+    <section
+      id="home"
+      className="relative overflow-hidden min-h-[110vh] md:min-h-[115vh] lg:min-h-[120vh]"
+      style={bgStyle}
+    >
+      {/* Overlay kiri → kanan */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/45 to-black/5" />
+
+      {/* Konten */}
+      <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-16">
+        {/* jarak vertikal biar turun seperti figma */}
+        <div className="pt-36 md:pt-44 lg:pt-56 pb-40 md:pb-56 lg:pb-64">
+          <div className="max-w-4xl text-white">
+            <h1 className="leading-[1.06] font-extrabold drop-shadow">
+              {/* headline dibesarkan */}
+              <span className="block text-[52px] sm:text-[64px] md:text-[80px] lg:text-[96px]">
+                Tentang Kami
+              </span>
+            </h1>
+
+            {/* sub-head persis copy figma */}
+            <p className="mt-4 text-[18px] sm:text-[20px] md:text-[22px] lg:text-[24px] font-semibold text-white/90 max-w-3xl">
+              Lebih dari 50 tahun menghadirkan solusi kebersihan bagi keluarga Indonesia.
+            </p>
           </div>
         </div>
-      </section>
-    );
-  }
-  
+      </div>
+
+      {/* Wave bawah */}
+      <div className="absolute -bottom-px left-0 right-0 overflow-hidden leading-[0]">
+        <svg
+          viewBox="0 0 1200 260"
+          preserveAspectRatio="none"
+          className="block w-[calc(100%+1.3px)] h-[140px] md:h-[185px] lg:h-[220px]"
+          aria-hidden="true"
+        >
+          <path
+            d="
+              M0,15
+              C280,265 910,13 1200,220
+              L1200,260
+              A260,260 0 0 1 1200,360
+              L0,290 Z
+            "
+            className="fill-white"
+          />
+        </svg>
+      </div>
+    </section>
+  );
+}
