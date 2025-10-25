@@ -1,186 +1,290 @@
 // src/pages/ContactPage.jsx
-import { useMemo } from "react";
+import { useState } from "react";
 
 /**
- * Cara pakai:
- * 1) Simpan icon kecil (SVG/PNG) di public/contact/:
- *    - phone.png, fax.png, marker.png (opsional whatsapp.png)
- * 2) Route di App.jsx:  <Route path="/kontak" element={<ContactPage />} />
- * 3) Navbar “Kontak kami” arahkan ke /kontak (sudah kamu lakukan).
+ * ContactPage — strip kontak + form yang mengirim ke Gmail via mailto:
+ *
+ * - Menambahkan Tanggal Pesanan (hari ini, otomatis)
+ * - Menambahkan input Tanggal Pengiriman (user pilih)
+ * - Tanggal dimasukkan ke template email secara rapi (format bahasa Indonesia)
  */
 
-// Embed ke alamat: Jl. Mayor S.L. Tobing No.46, Tasikmalaya, Jawa Barat 46126
-// (konversi dari maps.app.goo.gl ke embed search Google Maps)
-const MAP_EMBED_URL =
-  "https://www.google.com/maps?q=Jl.%20Mayor%20S.L.%20Tobing%20No.46%2C%20Tasikmalaya%2C%20Jawa%20Barat%2046126&z=17&output=embed";
-
-// (opsional) link “Buka di Google Maps” tab baru
-const MAP_OPEN_URL =
-  "https://www.google.com/maps/search/?api=1&query=Jl.+Mayor+S.L.+Tobing+No.46,+Tasikmalaya,+Jawa+Barat+46126";
-
 export default function ContactPage() {
-  const mapSrc = useMemo(() => MAP_EMBED_URL, []);
-
-  const INFO = [
+  const CONTACT_ITEMS = [
     {
-      img: "/contact/marker.png",
-      alt: "Alamat",
-      label:
-        "Jl. Mayor SL Tobing No. 46 Tasikmalaya – West Java – Indonesia",
+      key: "wa",
+      img: "/logo/whatsapp.png",
+      title: "WhatsApp",
+      label: "+62 821-1622-3009",
+      href: "https://wa.me/6282116223009",
     },
-    { img: "/contact/fax.png", alt: "Fax", label: "Fax : +62 265 332 603" },
-    { img: "/contact/phone.png", alt: "Telepon", label: "Phone : +62 265 331 006" },
+    {
+      key: "mail",
+      img: "/logo/gmail.png",
+      title: "Email",
+      label: "contact@agavi.id",
+      href: "mailto:contact@agavi.id",
+    },
+    {
+      key: "tokopedia",
+      img: "/logo/tokopedia.png",
+      title: "Tokopedia",
+      label: "Tokopedia",
+      href: "https://www.tokopedia.com/your-shop",
+    },
+    {
+      key: "ig",
+      img: "/logo/instagram.png",
+      title: "Instagram",
+      label: "agavi.official",
+      href: "https://instagram.com/agavi.official",
+    },
   ];
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#E8FAF7] via-[#D4F4EE] to-[#E8FAF7]">
-      <section className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-10 md:py-14">
-        <div className="grid md:grid-cols-2 gap-8 items-start">
-          {/* KIRI: FORM + INFO */}
-          <div
-            className="bg-white/70 backdrop-blur rounded-2xl p-5 md:p-6 shadow-[0_8px_28px_rgba(2,18,8,0.08)]"
-            data-aos="fade-right"
-          >
-            <FormCard />
-
-            {/* INFO KONTAK */}
-            <div className="mt-6 space-y-3">
-              {INFO.map((it, i) => (
-                <div
-                  key={i}
-                  className="flex items-start gap-3"
-                  data-aos="fade-up"
-                  data-aos-delay={100 + i * 80}
+      {/* CONTACT STRIP */}
+      <section className="bg-white">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-8 md:py-10">
+          <div className="flex flex-col items-center">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-8 justify-items-center w-full">
+              {CONTACT_ITEMS.map((it) => (
+                <a
+                  key={it.key}
+                  href={it.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={it.title}
+                  className="group flex flex-col items-center no-underline"
                 >
-                  {it.img ? (
+                  <div className="rounded-full p-2 bg-white/0">
                     <img
                       src={it.img}
-                      alt={it.alt}
-                      className="w-5 h-5 mt-1 opacity-80"
+                      alt={it.title}
+                      className="w-24 h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain
+                                 filter grayscale opacity-80
+                                 transition-all duration-200
+                                 group-hover:filter-none group-hover:opacity-100"
+                      draggable={false}
+                      onError={(e) => { e.currentTarget.style.display = "none"; }}
                     />
-                  ) : (
-                    <span className="text-teal-700 mt-1">•</span>
-                  )}
-                  <p className="text-slate-700 leading-relaxed">{it.label}</p>
-                </div>
+                  </div>
+
+                  <div className="mt-3 text-center">
+                    <div className="text-sm md:text-base font-semibold text-slate-700">
+                      {it.label}
+                    </div>
+                  </div>
+                </a>
               ))}
-            </div>
-          </div>
-
-          {/* KANAN: GOOGLE MAPS */}
-          <div
-            className="rounded-3xl overflow-hidden shadow-[0_18px_45px_rgba(2,18,8,0.12)] border border-white/50"
-            data-aos="fade-left"
-          >
-            <div className="aspect-[16/12] md:aspect-[16/11] lg:aspect-[16/10]">
-              <iframe
-                title="Lokasi PT Catur Wangsa Indah"
-                src={mapSrc}
-                width="100%"
-                height="100%"
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                className="w-full h-full"
-              />
-            </div>
-
-            {/* tombol buka di Google Maps (opsional, ala figma tidak mengganggu) */}
-            <div className="p-3 text-right">
-              <a
-                href={MAP_OPEN_URL}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#0f766e] hover:underline"
-              >
-                Buka di Google Maps
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="inline-block"
-                >
-                  <path
-                    d="M14 3h7v7m0-7L10 14"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M21 21H3V3"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                  />
-                </svg>
-              </a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* FORM */}
+      <section className="max-w-3xl mx-auto px-6 md:px-10 lg:px-12 py-10">
+        <div className="rounded-2xl bg-white/70 backdrop-blur p-6 md:p-8 shadow-[0_10px_30px_rgba(2,18,8,0.06)]">
+          <h2 className="text-xl font-bold text-slate-800 mb-4">Hubungi Kami</h2>
+          <FormCard />
+        </div>
+      </section>
+
+      {/* spacer */}
+      <section className="py-24" />
     </main>
   );
 }
 
-/* ======================= */
-/*        SUB KOMPONEN     */
-/* ======================= */
-
+/* =========================
+   FormCard (mailto template) - DENGAN TANGGAL
+   ========================= */
 function FormCard() {
+  const [name, setName] = useState("");
+  const [fromEmail, setFromEmail] = useState("");
+  const [prefix] = useState("+62"); // tetap +62, readonly
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [deliveryDate, setDeliveryDate] = useState(""); // YYYY-MM-DD
+
+  // alamat tujuan email
+  const TO_EMAIL = "yudhapramudia29@gmail.com";
+
+  // Format tanggal ke string bahasa Indonesia (contoh: Sabtu, 25 Oktober 2025)
+  const formatFullDate = (dateObj) => {
+    if (!dateObj) return "-";
+    try {
+      return dateObj.toLocaleString("id-ID", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+    } catch {
+      return dateObj.toDateString();
+    }
+  };
+
+  // Format tanggal + jam (untuk tanggal pesanan termasuk jam)
+  const formatDateTime = (dateObj) => {
+    if (!dateObj) return "-";
+    try {
+      return dateObj.toLocaleString("id-ID", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+    } catch {
+      return dateObj.toString();
+    }
+  };
+
+  // min untuk input tanggal pengiriman (tidak boleh kurang dari hari ini)
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  const minDelivery = `${yyyy}-${mm}-${dd}`;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // tanggal pesanan — sekarang
+    const orderDate = new Date();
+    const orderDateStr = formatDateTime(orderDate);
+
+    // tanggal pengiriman yang diinginkan (jika ada)
+    let deliveryDateStr = "-";
+    if (deliveryDate) {
+      // buat object Date dari string YYYY-MM-DD (set time ke 00:00)
+      const d = new Date(`${deliveryDate}T00:00:00`);
+      deliveryDateStr = formatFullDate(d);
+    }
+
+    // Subject email
+    const subject = `Pesanan / Permintaan - ${name || "Pengunjung"}`;
+
+    // Body template (formal, rapi)
+    const bodyLines = [
+      "Kepada Yth. Bapak/Ibu,",
+      "",
+      "Berikut adalah detail pesanan / permintaan yang dikirim melalui formulir kontak website:",
+      "",
+      `🕓 Tanggal Pesanan       : ${orderDateStr}`,
+      `🚚 Tanggal Pengiriman    : ${deliveryDateStr}`,
+      "",
+      `👤 Nama Lengkap          : ${name || "-"}`,
+      `📧 Alamat Email          : ${fromEmail || "-"}`,
+      `📱 No. WhatsApp          : ${prefix}${phone || "-"}`,
+      `🏠 Alamat Pengiriman     : ${address || "-"}`,
+      "",
+      "— Catatan / Instruksi —",
+      "(silakan tambahkan keterangan/instruksi tambahan di sini jika perlu)",
+      "",
+      "Demikian informasi yang dapat kami sampaikan. Mohon konfirmasi dan tindak lanjutnya.",
+      "",
+      "Hormat kami,",
+      "PT Catur Wangsa Indah",
+    ];
+
+    const body = encodeURIComponent(bodyLines.join("\n"));
+
+    // Bangun mailto link (encode)
+    const mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
+
+    // Buka mail client / gmail
+    // gunakan elemen <a> agar membuka di tab baru lebih dapat diandalkan
+    const a = document.createElement("a");
+    a.href = mailto;
+    a.target = "_blank";
+    a.rel = "noreferrer noopener";
+    a.click();
+  };
+
   return (
-    <form
-      className="grid gap-4"
-      onSubmit={(e) => {
-        e.preventDefault();
-        // TODO: sambungkan ke backend / form service
-        alert("Terima kasih! Form kamu kami terima.");
-      }}
-      data-aos="fade-up"
-    >
-      <Field label="Nama Lengkap">
+    <form onSubmit={handleSubmit} className="grid gap-4">
+      <label className="block">
+        <span className="block text-slate-700 font-semibold mb-2">Nama Lengkap</span>
         <input
           type="text"
-          required
+          value={name}
+          onChange={(e) => setName(e.target.value)}
           placeholder="Masukan nama anda"
-          className="field-input"
+          className="w-full rounded-lg border border-slate-200 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-300 bg-white"
+          required
         />
-      </Field>
+      </label>
 
-      <Field label="Email">
+      <label className="block">
+        <span className="block text-slate-700 font-semibold mb-2">Email</span>
         <input
           type="email"
-          required
+          value={fromEmail}
+          onChange={(e) => setFromEmail(e.target.value)}
           placeholder="Masukan email anda"
-          className="field-input"
+          className="w-full rounded-lg border border-slate-200 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-300 bg-white"
+          required
         />
-      </Field>
+      </label>
 
-      <Field label="No Telepon / WA">
+      <label className="block">
+        <span className="block text-slate-700 font-semibold mb-2">No. Telepon / WA</span>
         <div className="flex gap-2">
           <input
             type="text"
-            value="+62"
+            value={prefix}
             readOnly
-            className="w-20 field-input text-center"
+            className="w-20 rounded-lg border border-slate-200 px-3 py-2 bg-slate-100 text-center"
           />
           <input
             type="tel"
-            required
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             placeholder="812345678"
-            className="flex-1 field-input"
+            className="flex-1 rounded-lg border border-slate-200 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-300 bg-white"
+            required
           />
         </div>
-      </Field>
+      </label>
 
-      <Field label="Alamat">
+      <label className="block">
+        <span className="block text-slate-700 font-semibold mb-2">Alamat Pengiriman</span>
         <textarea
-          rows={4}
-          placeholder="Masukan alamat anda"
-          className="field-input resize-none"
+          rows={2}
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          placeholder="Masukan alamat lengkap untuk pengiriman"
+          className="w-full rounded-lg border border-slate-200 px-3 py-2 outline-none focus:ring-2 focus:ring-emerald-300 bg-white resize-none"
+          required
         />
-      </Field>
+      </label>
+
+      {/* Tanggal Pesanan (hari ini) - readonly */}
+      <label className="block">
+        <span className="block text-slate-700 font-semibold mb-2">Tanggal Pesanan</span>
+        <input
+          type="text"
+          value={formatDateTime(new Date())}
+          readOnly
+          className="w-full rounded-lg border border-slate-200 px-3 py-2 bg-slate-50 text-slate-700"
+        />
+      </label>
+
+      {/* Tanggal Pengiriman (pilihan user) */}
+      <label className="block">
+        <span className="block text-slate-700 font-semibold mb-2">Tanggal Pengiriman (diinginkan)</span>
+        <input
+          type="date"
+          value={deliveryDate}
+          onChange={(e) => setDeliveryDate(e.target.value)}
+          min={minDelivery}
+          className="w-full rounded-lg border border-slate-200 px-3 py-2 bg-white"
+        />
+        <p className="text-xs text-slate-500 mt-1">Pilih tanggal pengiriman yang Anda inginkan (opsional).</p>
+      </label>
 
       <button
         type="submit"
@@ -190,14 +294,5 @@ function FormCard() {
         Kirim
       </button>
     </form>
-  );
-}
-
-function Field({ label, children }) {
-  return (
-    <label className="block">
-      <span className="block text-slate-700 font-semibold mb-2">{label}</span>
-      {children}
-    </label>
   );
 }

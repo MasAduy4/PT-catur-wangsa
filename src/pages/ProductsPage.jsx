@@ -1,7 +1,7 @@
 // src/pages/ProductsPage.jsx
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-
+import LogoLoop from "../components/LogoLoop";
 
 /** ====== DATA DUMMY (ganti dengan data asli/API) ====== */
 const ALL_PRODUCTS = [
@@ -135,6 +135,34 @@ export default function ProductsPage() {
     setPage(clamped);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+
+  /** ====== Marketplace logos (letakkan file gambar di public/logo/) ======
+   *  - ganti href ke link toko kamu
+   *  - file: public/logo/shopee.png, public/logo/tokopedia.png, public/logo/lazada.png, public/logo/blibli.png
+   */
+  const marketplaceLogos = [
+    {
+      src: "public/logo/shopee.png",
+      alt: "Shopee",
+      href: "https://shopee.co.id/your-shop", // ganti
+      title: "Shopee",
+      width: 192, height: 192
+    },
+    {
+      src: "public/logo/tokopedia.png",
+      alt: "Tokopedia",
+      href: "https://www.tokopedia.com/your-shop", // ganti
+      title: "Tokopedia",
+      width: 192, height: 192
+    },
+    {
+      src: "public/logo/tiktok.jpg",
+      alt: "Tiktok",
+      href: "https://www.tiktok.com/en/", // ganti
+      title: "Lazada",
+      width: 192, height: 192
+    },
+  ];
 
   return (
     <main className="bg-gradient-to-br from-emerald-100 via-teal-100 to-cyan-100/70 min-h-screen">
@@ -274,7 +302,7 @@ export default function ProductsPage() {
         )}
       </section>
 
-      {/* CTA ala marketplace */}
+      {/* CTA ala marketplace (diganti menjadi LogoLoop) */}
       <section className="pb-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="rounded-2xl bg-white shadow ring-1 ring-black/5 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -286,11 +314,24 @@ export default function ProductsPage() {
                 Pesan produk kami melalui marketplace kesayanganmu.
               </p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              <a className="px-4 py-2 rounded-full bg-emerald-600 text-white" href="#" onClick={(e)=>e.preventDefault()}>Shopee</a>
-              <a className="px-4 py-2 rounded-full bg-emerald-600 text-white" href="#" onClick={(e)=>e.preventDefault()}>Tokopedia</a>
-              <a className="px-4 py-2 rounded-full bg-emerald-600 text-white" href="#" onClick={(e)=>e.preventDefault()}>Lazada</a>
-              <a className="px-4 py-2 rounded-full bg-emerald-600 text-white" href="#" onClick={(e)=>e.preventDefault()}>Blibli</a>
+
+            {/* LogoLoop di kanan (responsive) */}
+            <div className="w-full md:w-1/2">
+            <LogoLoop
+              logos={marketplaceLogos}
+              speed={80}
+              direction="left"
+              logoHeight={96}   // ukuran logo lebih besar
+              gap={56}          // jarak antar logo (sesuaikan)
+              style={{ '--logoloop-logoHeight': 'clamp(48px, 8vw, 96px)' }}
+              pauseOnHover={true}
+              fadeOut={true}
+              fadeOutColor="#ffffff"
+              scaleOnHover={true}
+              ariaLabel="Logo marketplace"
+              width="100%"
+            />
+
             </div>
           </div>
         </div>
