@@ -4,9 +4,12 @@ import { useState } from "react";
 /**
  * ContactPage — strip kontak + form yang mengirim ke Gmail via mailto:
  *
+ * - Form di kiri, preview Google Maps di kanan (responsive)
  * - Menambahkan Tanggal Pesanan (hari ini, otomatis)
  * - Menambahkan input Tanggal Pengiriman (user pilih)
  * - Tanggal dimasukkan ke template email secara rapi (format bahasa Indonesia)
+ *
+ * Note: ubah MAP_QUERY jika ingin menampilkan lokasi lain.
  */
 
 export default function ContactPage() {
@@ -41,6 +44,18 @@ export default function ContactPage() {
     },
   ];
 
+  // Alamat yang kamu kirim:
+  const FULL_ADDRESS = "Jl. Mayor S.L. Tobing No.46, Tugujaya, Kec. Cihideung, Kab. Tasikmalaya, Jawa Barat 46126";
+
+  // MAP_QUERY gunakan alamat lengkap
+  const MAP_QUERY = FULL_ADDRESS;
+  const MAP_SEARCH_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+    MAP_QUERY
+  )}`;
+  const MAP_IFRAME_SRC = `https://www.google.com/maps?q=${encodeURIComponent(
+    MAP_QUERY
+  )}&output=embed`;
+
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#E8FAF7] via-[#D4F4EE] to-[#E8FAF7]">
       {/* CONTACT STRIP */}
@@ -66,7 +81,9 @@ export default function ContactPage() {
                                  transition-all duration-200
                                  group-hover:filter-none group-hover:opacity-100"
                       draggable={false}
-                      onError={(e) => { e.currentTarget.style.display = "none"; }}
+                      onError={(e) => {
+                        e.currentTarget.style.display = "none";
+                      }}
                     />
                   </div>
 
@@ -82,11 +99,62 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* FORM */}
-      <section className="max-w-3xl mx-auto px-6 md:px-10 lg:px-12 py-10">
-        <div className="rounded-2xl bg-white/70 backdrop-blur p-6 md:p-8 shadow-[0_10px_30px_rgba(2,18,8,0.06)]">
-          <h2 className="text-xl font-bold text-slate-800 mb-4">Hubungi Kami</h2>
-          <FormCard />
+      {/* FORM + MAP (dua kolom di desktop) */}
+      <section className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* KIRI: Form */}
+          <div className="rounded-2xl bg-white/70 backdrop-blur p-6 md:p-8 shadow-[0_10px_30px_rgba(2,18,8,0.06)]">
+            <h2 className="text-xl font-bold text-slate-800 mb-4">Hubungi Kami</h2>
+            <FormCard />
+          </div>
+
+          {/* KANAN: Map preview + alamat + tombol buka */}
+          <aside className="rounded-2xl bg-white/70 backdrop-blur p-6 md:p-8 shadow-[0_10px_30px_rgba(2,18,8,0.04)] flex flex-col">
+            <h3 className="text-lg font-semibold text-slate-800 mb-3">Lokasi Kami</h3>
+
+            <div className="overflow-hidden rounded-xl border border-slate-100 shadow-sm">
+              {/* Iframe preview (responsive) */}
+              <div className="w-full h-56 md:h-72 lg:h-80 bg-slate-100">
+                <iframe
+                  title="peta-lokasi"
+                  src={MAP_IFRAME_SRC}
+                  loading="lazy"
+                  className="w-full h-full border-0"
+                />
+              </div>
+            </div>
+
+            <div className="mt-4 text-slate-600 flex-1">
+              <p className="text-sm">
+                <span className="block font-medium text-slate-800">Alamat lengkap:</span>
+                <span className="block mt-1">{FULL_ADDRESS}</span>
+              </p>
+              <p className="text-sm text-slate-500 mt-3">
+                Jika peta tidak tampil (terblokir oleh browser/CSP), silakan klik tombol di bawah untuk membuka Google Maps.
+              </p>
+            </div>
+
+            <div className="mt-4 flex gap-3">
+              <a
+                href={MAP_SEARCH_URL}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="inline-flex items-center justify-center rounded-lg bg-emerald-600 text-white px-4 py-2 font-medium hover:bg-emerald-700 transition"
+              >
+                Buka di Google Maps
+              </a>
+
+              <button
+                onClick={() => {
+                  navigator.clipboard?.writeText(MAP_SEARCH_URL);
+                  alert("Link Maps disalin ke clipboard.");
+                }}
+                className="rounded-lg border border-slate-200 px-4 py-2 text-slate-700 hover:bg-slate-50 transition"
+              >
+                Salin Link
+              </button>
+            </div>
+          </aside>
         </div>
       </section>
 
@@ -108,7 +176,7 @@ function FormCard() {
   const [deliveryDate, setDeliveryDate] = useState(""); // YYYY-MM-DD
 
   // alamat tujuan email
-  const TO_EMAIL = "yudhapramudia29@gmail.com";
+  const TO_EMAIL = "vakultastr@gmail.com";
 
   // Format tanggal ke string bahasa Indonesia (contoh: Sabtu, 25 Oktober 2025)
   const formatFullDate = (dateObj) => {
@@ -187,7 +255,7 @@ function FormCard() {
       "Demikian informasi yang dapat kami sampaikan. Mohon konfirmasi dan tindak lanjutnya.",
       "",
       "Hormat kami,",
-      "PT Catur Wangsa Indah",
+      "Pengirim",
     ];
 
     const body = encodeURIComponent(bodyLines.join("\n"));
@@ -196,7 +264,6 @@ function FormCard() {
     const mailto = `mailto:${TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${body}`;
 
     // Buka mail client / gmail
-    // gunakan elemen <a> agar membuka di tab baru lebih dapat diandalkan
     const a = document.createElement("a");
     a.href = mailto;
     a.target = "_blank";

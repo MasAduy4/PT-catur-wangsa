@@ -1,8 +1,10 @@
 // src/components/Footer.jsx
+import React from "react";
+
 export default function Footer() {
   return (
-    <footer className="bg-[#6FA6A4] text-white">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-14">
+    <footer className="bg-gradient-to-b from-[#66b9b6] to-[#5b9b99] text-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-10 py-12 md:py-16">
 
         {/* Header tengah */}
         <div className="text-center">
@@ -14,31 +16,24 @@ export default function Footer() {
           </p>
 
           {/* garis tipis di tengah */}
-          <div className="mt-3 flex items-center justify-center">
-            <span className="block h-px w-20 bg-white/60" />
+          <div className="mt-3 flex items-center justify-center" aria-hidden>
+            <span className="block h-px w-20 bg-white/50" />
             <span className="mx-3 block h-[2px] w-24 bg-white" />
-            <span className="block h-px w-20 bg-white/60" />
+            <span className="block h-px w-20 bg-white/50" />
           </div>
         </div>
 
-        {/* 3 kolom */}
+        {/* content grid */}
         <div className="mt-10 grid gap-10 md:grid-cols-3">
+
           {/* Perusahaan */}
           <div>
             <h4 className="font-semibold text-[18px] mb-4">Perusahaan</h4>
             <ul className="space-y-3 text-white/95">
-              <li>
-                <a href="/about" className="hover:underline">Tentang Kami</a>
-              </li>
-              <li>
-                <a href="/produk" className="hover:underline">Produk</a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">Kebijakan Privasi</a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">Syarat &amp; Ketentuan</a>
-              </li>
+              <li><a href="/about" className="hover:underline">Tentang Kami</a></li>
+              <li><a href="/produk" className="hover:underline">Produk</a></li>
+              <li><a href="#" className="hover:underline">Kebijakan Privasi</a></li>
+              <li><a href="#" className="hover:underline">Syarat &amp; Ketentuan</a></li>
             </ul>
           </div>
 
@@ -53,50 +48,81 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Pelanggan */}
+          {/* Sertifikat (ganti dari Pelanggan) */}
           <div>
-            <h4 className="font-semibold text-[18px] mb-4">Pelanggan</h4>
-            <ul className="space-y-3 text-white/95">
-              <li>
-                <a href="/#contact" className="hover:underline">Hubungi Kami</a>
-              </li>
-              <li className="pt-2">
-                <div className="flex items-center gap-4">
-                  {/* IG */}
-                  <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="opacity-95 hover:opacity-100">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="stroke-current">
-                      <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" strokeWidth="1.8"/>
-                      <circle cx="12" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.8"/>
-                      <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-                    </svg>
-                  </a>
-                  {/* TikTok */}
-                  <a href="https://tiktok.com" target="_blank" rel="noreferrer" aria-label="TikTok" className="opacity-95 hover:opacity-100">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="stroke-current">
-                      <path d="M14 3v5.2a5.8 5.8 0 0 0 5 0V12a7.5 7.5 0 1 1-7.5-7.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </a>
-                  {/* Facebook */}
-                  <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook" className="opacity-95 hover:opacity-100">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" className="stroke-current">
-                      <path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V9H7v3h2v9h3v-9h2.3l.7-3H12V6.8c0-.5.4-.8.9-.8H15V3z" fill="currentColor"/>
-                    </svg>
-                  </a>
-                  {/* YouTube */}
-                  <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube" className="opacity-95 hover:opacity-100">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M23.5 7.5a4 4 0 0 0-2.8-2.9C18.8 4 12 4 12 4s-6.8 0-8.7.6A4 4 0 0 0 .5 7.5 41.4 41.4 0 0 0 0 12c0 1.5.1 3 .5 4.5a4 4 0 0 0 2.8 2.9C5.2 20 12 20 12 20s6.8 0 8.7-.6a4 4 0 0 0 2.8-2.9c.4-1.5.5-3 .5-4.5 0-1.5-.1-3-.5-4.5ZM9.5 15.5v-7l6 3.5-6 3.5Z"/>
+            <h4 className="font-semibold text-[18px] mb-4">Sertifikat</h4>
+
+            <p className="text-white/90 text-sm mb-4">
+              Kami memiliki sertifikat yang menjamin kualitas & kepatuhan produk.
+            </p>
+
+            <div className="space-y-3">
+              {/* Sertifikat 1 */}
+              <article className="flex items-center gap-3 bg-white/6 p-3 rounded-lg shadow-sm hover:bg-white/10 transition">
+                {/* simple badge (SVG) */}
+                <div className="shrink-0 w-12 h-12 flex items-center justify-center bg-white/10 rounded-md">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-white">
+                    <path d="M12 2l2.7 5.5L20 8l-4 3.8L17 18l-5-2.7L7 18l1-6.2L4 8l5.3-.5L12 2z" fill="currentColor" />
+                  </svg>
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="font-medium text-sm">Sertifikat SJH BPJH</div>
+                  <div className="text-xs text-white/70 truncate">Sertifikat Halal &amp; Kepatuhan Produk</div>
+                </div>
+
+                <div className="flex-shrink-0">
+                  <a
+                    href="public/sertif/Sertifikat SJH BPJH .pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 border border-white/20 rounded-md text-sm hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
+                    aria-label="Lihat Sertifikat SJH BPJH"
+                  >
+                    Lihat
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="stroke-current">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </a>
                 </div>
-              </li>
-            </ul>
+              </article>
+
+              {/* Sertifikat 2 */}
+              <article className="flex items-center gap-3 bg-white/6 p-3 rounded-lg shadow-sm hover:bg-white/10 transition">
+                <div className="shrink-0 w-12 h-12 flex items-center justify-center bg-white/10 rounded-md">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" className="text-white">
+                    <rect x="3" y="3" width="18" height="18" rx="3" fill="currentColor" />
+                    <path d="M7 12h10M7 16h6" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </div>
+
+                <div className="flex-1 min-w-0">
+                  <div className="font-medium text-sm">Sertifikat CPPKRTB</div>
+                  <div className="text-xs text-white/70 truncate">Sertifikat Pengolahan &amp; Tata Kelola Limbah</div>
+                </div>
+
+                <div className="flex-shrink-0">
+                  <a
+                    href="public/sertif/Sertifikat CPPKRTB.pdf"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 px-3 py-1.5 bg-white/10 border border-white/20 rounded-md text-sm hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
+                    aria-label="Lihat Sertifikat CPPKRTB"
+                  >
+                    Lihat
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="stroke-current">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            </div>
           </div>
         </div>
       </div>
 
       {/* strip bawah */}
-      <div className="text-center text-white/90 py-4 text-sm border-t border-white/20">
+      <div className="text-center text-white/90 py-4 text-sm border-t border-white/10">
         © {new Date().getFullYear()} PT Catur Wangsa Indah. All rights reserved.
       </div>
     </footer>
