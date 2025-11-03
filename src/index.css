@@ -58,3 +58,21 @@ html { scroll-behavior: smooth; }
       linear-gradient(180deg, #FFFFFF 0%, #EAF9F6 55%, #CFFAFE 100%);
   }
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "@fontsource/poppins";
+body {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    #f7fffe 25%,
+    #e8faf7 45%,
+    #d6f8f4 70%,
+    #c9f5f1 100%
+  );
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+

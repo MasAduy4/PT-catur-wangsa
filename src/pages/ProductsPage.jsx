@@ -197,7 +197,7 @@ export default function ProductsPage() {
 
   return (
     <main className="bg-gradient-to-br from-emerald-100 via-teal-100 to-cyan-100/70 min-h-screen">
-      <section className="max-w-7xl mx-auto px-4 pt-10 pb-6">
+      <section className="max-w-7xl mx-auto px-4 pt-28 pb-6">
         <h1 className="text-3xl md:text-4xl font-extrabold text-emerald-800">Produk Kami</h1>
         <p className="mt-2 text-slate-600">Cari produk yang kamu mau, filter kategori, dan atur pengurutan.</p>
       </section>

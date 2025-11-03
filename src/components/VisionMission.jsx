@@ -1,88 +1,94 @@
 // src/components/VisionMission.jsx
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-function Card({ title, desc, img, alt, delay = 0 }) {
+export default function VisionMission() {
+  useEffect(() => {
+    AOS.init({ duration: 800, once: true, easing: "ease-in-out" });
+  }, []);
+
   return (
-    <div
-      className="bg-white/90 rounded-2xl p-7 md:p-8 text-center shadow-[0_6px_26px_rgba(2,18,8,0.06)] ring-1 ring-teal-900/5
-                 transition-all duration-300 hover:-translate-y-[2px] hover:shadow-[0_14px_36px_rgba(2,18,8,0.08)]"
-      data-aos="fade-up"
-      data-aos-delay={delay}
-    >
-      {/* Icon */}
-      <div className="mx-auto mb-4 h-16 w-16 md:h-18 md:w-18 rounded-2xl bg-teal-50 ring-1 ring-teal-200/70 grid place-items-center overflow-hidden">
-        {img ? (
-          <img
-            src={img}
-            alt={alt || title}
-            className="h-9 w-9 md:h-10 md:w-10 object-contain"
-            loading="lazy"
-            width={40}
-            height={40}
-          />
-        ) : null}
-      </div>
-
-      <h3 className="text-[22px] md:text-[24px] font-extrabold text-slate-800">{title}</h3>
-      <p className="text-slate-600 mt-3 leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-export default function VisionMission({
-  visionIcon = "/vision/target.png",
-  missionIcon = "/vision/handshake.png",
-  buildingImg = "/gedung.png",
-}) {
-  return (
-    <section className="py-16 md:py-20 bg-gradient-to-b from-white via-[#E8FAF7] to-white">
+    <section className="relative bg-gradient-to-br from-white via-[#E8FAF7]/80 to-[#D8F8F5] py-16 md:py-20 font-[Poppins]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        {/* Title */}
-        <div className="text-center" data-aos="fade-up">
-          <h2 className="text-[28px] md:text-[36px] lg:text-[40px] font-extrabold tracking-tight text-[#1e5f6b]">
+        {/* Heading */}
+        <div className="text-center mb-10" data-aos="fade-up">
+          <h2 className="text-[#10474E] text-[28px] md:text-[34px] font-extrabold leading-tight">
             Visi &amp; Misi
           </h2>
         </div>
 
-        <div className="mt-10 grid md:grid-cols-2 gap-10 items-center">
-          {/* Kartu kiri */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <Card
-              title="Visi"
-              img={visionIcon}
-              alt="Ikon visi"
-              desc="Menjadi produsen sabun dan deterjen terpercaya di Indonesia"
-              delay={100}
-            />
-            <Card
-              title="Misi"
-              img={missionIcon}
-              alt="Ikon misi"
-              desc="Menghadirkan produk berkualitas, ramah lingkungan, dan terjangkau"
-              delay={200}
-            />
-
-            {/* Quote / tagline */}
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          {/* Left Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
+            {/* Card Visi */}
             <div
-              className="sm:col-span-2 rounded-2xl bg-slate-100/70 text-slate-700 text-center px-5 py-5
-                         ring-1 ring-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.6)]"
+              className="rounded-2xl p-6 text-center shadow-[0_8px_30px_rgba(0,0,0,0.05)] ring-1 ring-[#BFEFE9]/50 
+                        bg-gradient-to-b from-[#F8FFFE] to-[#E8FAF7] transition-all duration-300"
               data-aos="fade-up"
-              data-aos-delay={260}
+              data-aos-delay="100"
             >
-              <p className="text-[15px] md:text-base">
+              <div className="flex justify-center mb-4">
+                <div className="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-[#D9F9F5] flex items-center justify-center ring-1 ring-[#00B9BE]/20">
+                  <img
+                    src="/vision/target.png"
+                    alt="Visi"
+                    className="h-7 w-7 md:h-8 md:w-8 object-contain"
+                  />
+                </div>
+              </div>
+              <h3 className="text-[#0F6F72] text-[20px] md:text-[22px] font-bold mb-2">
+                Visi
+              </h3>
+              <p className="text-slate-600 text-[14px] md:text-[15px] leading-relaxed">
+                Menjadi produsen sabun dan deterjen terpercaya di Indonesia
+              </p>
+            </div>
+
+            {/* Card Misi */}
+            <div
+              className="rounded-2xl p-6 text-center shadow-[0_8px_30px_rgba(0,0,0,0.05)] ring-1 ring-[#BFEFE9]/50 
+                        bg-gradient-to-b from-[#F8FFFE] to-[#E8FAF7] transition-all duration-300"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div className="flex justify-center mb-4">
+                <div className="h-12 w-12 md:h-14 md:w-14 rounded-xl bg-[#D9F9F5] flex items-center justify-center ring-1 ring-[#00B9BE]/20">
+                  <img
+                    src="/vision/handshake.png"
+                    alt="Misi"
+                    className="h-7 w-7 md:h-8 md:w-8 object-contain"
+                  />
+                </div>
+              </div>
+              <h3 className="text-[#0F6F72] text-[20px] md:text-[22px] font-bold mb-2">
+                Misi
+              </h3>
+              <p className="text-slate-600 text-[14px] md:text-[15px] leading-relaxed">
+                Menghadirkan produk berkualitas, ramah lingkungan, dan terjangkau
+              </p>
+            </div>
+
+            {/* Tagline */}
+            <div
+              className="sm:col-span-2 bg-[#E9F9F6] rounded-2xl p-4 text-center shadow-inner ring-1 ring-[#BFEFE9]/60"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <p className="text-slate-700 text-[14px] md:text-[15px] italic">
                 “Kami percaya kebersihan adalah awal dari kesejahteraan keluarga”
               </p>
             </div>
           </div>
 
-          {/* Gambar kanan */}
+          {/* Right Image */}
           <div
-            className="rounded-[28px] overflow-hidden shadow-[0_18px_50px_rgba(2,18,8,0.12)] ring-1 ring-teal-900/10"
+            className="rounded-[24px] overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.12)] ring-1 ring-[#00B9BE]/10"
             data-aos="fade-left"
             data-aos-delay="150"
           >
             <img
-              src={buildingImg}
+              src="/gedung.png"
               alt="Gedung PT Catur Wangsa Indah"
               className="w-full h-full object-cover"
               loading="lazy"
