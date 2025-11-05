@@ -103,8 +103,8 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="produk" element={<ProductsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/produk" element={<ProductsPage />} />
           <Route path="/kontak" element={<ContactPage />} />
         </Route>
       </Routes>
