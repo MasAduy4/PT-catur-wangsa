@@ -190,9 +190,9 @@ export default function ProductsPage() {
   /* ===================================================== */
 
   const marketplaceLogos = [
-    { src: "public/logo/shopee.png", alt: "Shopee", href: "#", title: "Shopee", width: 192, height: 192 },
-    { src: "public/logo/tokopedia.png", alt: "Tokopedia", href: "#", title: "Tokopedia", width: 192, height: 192 },
-    { src: "public/logo/tiktok.jpg", alt: "Tiktok", href: "#", title: "Tiktok", width: 192, height: 192 },
+    { src: "/logo/shopee.png", alt: "Shopee", href: "#", title: "Shopee", width: 192, height: 192 },
+    { src: "/logo/tokopedia.png", alt: "Tokopedia", href: "#", title: "Tokopedia", width: 192, height: 192 },
+    { src: "/logo/tiktok.jpg", alt: "Tiktok", href: "#", title: "Tiktok", width: 192, height: 192 },
   ];
 
   return (
