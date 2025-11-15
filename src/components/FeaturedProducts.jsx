@@ -27,7 +27,7 @@ export default function FeaturedProducts() {
             className="relative flex justify-center md:justify-end order-1 md:order-2"
           >
             <img
-              src="/jelitoples.png"
+              src="public/product/Detergen Bubuk Fresklin  3FK.png"
               alt="Sabun Palem"
               className="w-[340px] sm:w-[400px] md:w-[480px] lg:w-[520px] rotate-[-6deg] drop-shadow-[0_25px_45px_rgba(0,0,0,0.3)] transition-transform duration-700 ease-out hover:rotate-[-3deg] hover:scale-110"
               draggable={false}

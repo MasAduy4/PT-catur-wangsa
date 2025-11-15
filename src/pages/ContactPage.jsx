@@ -7,29 +7,29 @@ export default function ContactPage() {
       key: "wa",
       img: "/logo/whatsapp.png",
       title: "WhatsApp",
-      label: "+62 821-1622-3009",
-      href: "https://wa.me/6282116223009",
+      label: "originalsabunpalem",
+      href: "https://wa.me/6289683827800",
     },
     {
       key: "mail",
       img: "/logo/gmail.png",
       title: "Email",
-      label: "contact@agavi.id",
-      href: "mailto:contact@agavi.id",
+      label: "originalsabunpalem@gmail.com",
+      href: "mailto:originalsabunpalem@gmail.com",
     },
     {
       key: "tokopedia",
       img: "/logo/tokopedia.png",
       title: "Tokopedia",
-      label: "Tokopedia",
-      href: "https://www.tokopedia.com/your-shop",
+      label: "Sabun Palem Original",
+      href: "https://tokopedia.link/mHWmzN105Xb",
     },
     {
       key: "ig",
       img: "/logo/instagram.png",
       title: "Instagram",
-      label: "agavi.official",
-      href: "https://instagram.com/agavi.official",
+      label: "sabunpalem_official",
+      href: "https://www.instagram.com/sabunpalem_official?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
     },
   ];
 
@@ -157,7 +157,7 @@ function FormCard() {
   const [address, setAddress] = useState("");
   const [deliveryDate, setDeliveryDate] = useState("");
 
-  const TO_EMAIL = "vakultastr@gmail.com";
+  const TO_EMAIL = "originalsabunpalem@gmail.com";
 
   const formatFullDate = (dateObj) =>
     dateObj?.toLocaleString("id-ID", {

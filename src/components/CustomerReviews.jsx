@@ -7,19 +7,19 @@ import { Star } from "lucide-react";
 const REVIEWS = [
   {
     id: 1,
-    name: "Acell",
-    text: "Suka banget sama sabun ini! Wanginya khas dan ampuh banget buat ngilangin noda membandel. Teksturnya juga lembut di tangan.",
+    name: "safarahayu",
+    text: "Barang sudah sampai sesuai dengan pesanan, barang sesuai dengan deskripsi, sesuai dengan gambar, sampai dengan cepat. Terima kasih seller, kurirnya juga ramah, semiga tokonya maju dan berkah ya",
     avatar: "https://i.pravatar.cc/100?img=1",
   },
   {
     id: 2,
-    name: "Acell",
-    text: "Kualitasnya stabil dari dulu. Busa banyak, bersih maksimal, dan harga tetap ramah di kantong. Recommended banget!",
+    name: "futriindiyani881",
+    text: "Sabunnya lengkap, suka banget sabun ini karena lebih bersih kalo nyuci. ",
     avatar: "https://i.pravatar.cc/100?img=2",
   },
   {
     id: 3,
-    name: "Acell",
+    name: "aihenynuraeny",
     text: "Produk lokal dengan kualitas internasional! Packaging rapi, aroma segar, dan daya bersihnya mantap. Bakal repeat order terus.",
     avatar: "https://i.pravatar.cc/100?img=3",
   },

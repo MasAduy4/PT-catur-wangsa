@@ -12,22 +12,22 @@ export default function History() {
     {
       icon: "/why/Icon_jam.png",
       title: "1967",
-      text: "Didirikan oleh Wong Kang Kuin",
+      text: "Caturwangsa Indah resmi lahir pada 1967, didirikan oleh Wong Kang Kuin sebagai usaha keluarga yang menjadi fondasi perusahaan hingga kini.",
     },
     {
       icon: "/history/Icon_kemas.png",
       title: "1975",
-      text: "Produksi sabun batangan buatan tangan",
+      text: "Pada 1975 kami mulai memproduksi sabun batangan buatan tangan di Tasikmalaya — langkah awal kami memasuki dunia produk pembersih.",
     },
     {
       icon: "/history/Icon_pabrik.png",
       title: "Saat ini",
-      text: "Produksi dengan skala besar, produk dikenal luas",
+      text: "Kini kami bergerak sebagai produsen sabun dan deterjen dengan komitmen mengikuti teknologi terkini. Produk kami banyak dicari konsumen.",
     },
     {
       icon: "/history/Icon_produksi.png",
       title: "Modernisasi",
-      text: "Produksi detergent krim populer",
+      text: "Seiring perkembangan, Caturwangsa Indah memodernisasi fasilitas produksi dan melahirkan deterjen krim yang menjadi salah satu produk pembersih serbaguna paling populer di Indonesia.",
     },
   ];
 
