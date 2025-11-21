@@ -1,5 +1,4 @@
-// src/components/ProductionVideo.jsx
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -9,48 +8,52 @@ export default function ProductionVideo() {
   }, []);
 
   return (
-    // ProductionVideo.jsx
-<section className="relative py-20 md:py-24 overflow-hidden bg-transparent">
-
+    // ProductionVideo.jsx - Fullscreen + Autoplay (muted) YouTube embed
+    <section className="relative w-full min-h-screen overflow-hidden bg-transparent">
       {/* Accent soft blur to add depth */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-[-250px] left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[#00C4CC]/10 blur-[180px] opacity-60" />
         <div className="absolute bottom-[-300px] right-1/2 translate-x-1/2 w-[700px] h-[700px] bg-[#00C4CC]/5 blur-[160px]" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 md:px-10">
+      <div className="relative max-w-7xl mx-auto px-6 md:px-10 flex flex-col items-center text-center">
         {/* Heading */}
         <h2
-          className="text-3xl md:text-4xl font-extrabold text-[#10474E] text-center font-[Poppins]"
+          className="text-3xl md:text-4xl font-extrabold text-[#10474E] mt-8 font-[Poppins] z-10"
           data-aos="fade-up"
         >
           Bagaimana Produk Kami Dibuat
         </h2>
 
         <p
-          className="text-center text-slate-700 mt-3 mb-10 text-[15px] md:text-[16px] font-light"
+          className="text-slate-700 mt-3 mb-6 text-[15px] md:text-[16px] font-light z-10"
           data-aos="fade-up"
           data-aos-delay="100"
         >
           Dari bahan baku pilihan hingga ke tangan Anda.
         </p>
 
-        {/* Video Container */}
+        {/* Video Container - full viewport height (dikurangi space untuk heading) */}
         <div
-          className="aspect-video w-full rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.1)] 
-                     border border-[#E0F7F4]/70 bg-gradient-to-br from-white/90 to-[#F8FFFE]/90
-                     transform-gpu will-change-transform transition-all duration-700 ease-out hover:scale-[1.01]"
+          className="relative w-full rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.1)] border border-[#E0F7F4]/70 bg-gradient-to-br from-white/90 to-[#F8FFFE]/90 z-0"
           data-aos="zoom-in"
           data-aos-delay="200"
+          style={{ height: 'calc(100vh - 160px)' }}
         >
           <iframe
-            className="w-full h-full"
-            // src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="Video Produksi"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            className="absolute inset-0 w-full h-full"
+            src="https://www.youtube.com/embed/TxHXfc79js8?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1"
+            title="Palem - Proses Produksi"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
           />
         </div>
+
+        {/* Optional: small note for accessibility / fallback */}
+        <p className="text-xs text-slate-500 mt-4 z-10">
+          Jika autoplay tidak berjalan di beberapa browser, klik tombol play pada video.
+        </p>
       </div>
 
       {/* Hilangkan gelombang bawah agar gradasinya menyatu ke section berikutnya */}

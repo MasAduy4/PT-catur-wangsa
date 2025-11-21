@@ -9,21 +9,25 @@ const REVIEWS = [
     id: 1,
     name: "safarahayu",
     text: "Barang sudah sampai sesuai dengan pesanan, barang sesuai dengan deskripsi, sesuai dengan gambar, sampai dengan cepat. Terima kasih seller, kurirnya juga ramah, semiga tokonya maju dan berkah ya",
-    avatar: "https://i.pravatar.cc/100?img=1",
+    avatar: "/logo/shopeecs.webp",
+    link: "https://shopee.co.id/sabunpalemoriginal",
   },
   {
     id: 2,
     name: "futriindiyani881",
-    text: "Sabunnya lengkap, suka banget sabun ini karena lebih bersih kalo nyuci. ",
-    avatar: "https://i.pravatar.cc/100?img=2",
+    text: "Sabunnya lengkap, suka banget sabun ini karena lebih bersih kalo nyuci.",
+    avatar: "/logo/tokopediacs.png",
+    link: "https://shopee.co.id/sabunpalemoriginal",
   },
   {
     id: 3,
     name: "aihenynuraeny",
     text: "Produk lokal dengan kualitas internasional! Packaging rapi, aroma segar, dan daya bersihnya mantap. Bakal repeat order terus.",
-    avatar: "https://i.pravatar.cc/100?img=3",
+    avatar: "/logo/shopeecs.webp",
+    link: "https://shopee.co.id/sabunpalemoriginal",
   },
 ];
+
 
 export default function CustomerReviews() {
   useEffect(() => {
@@ -67,7 +71,7 @@ export default function CustomerReviews() {
               <img
                 src={r.avatar}
                 alt={r.name}
-                className="h-20 w-20 rounded-full ring-4 ring-[#E9FBF8] shadow-md mb-4 object-cover"
+                className="h-30 w-30 rounded-full ring-4 ring-[#E9FBF8] shadow-md mb-4 object-cover"
               />
               <h3 className="font-semibold text-[#0F6F72] text-lg">{r.name}</h3>
 
