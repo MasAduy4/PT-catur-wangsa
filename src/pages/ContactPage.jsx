@@ -205,8 +205,8 @@ function FormCard() {
         `📱 No. WhatsApp : ${prefix}${phone}`,
         `🏠 Alamat : ${address}`,
         "",
-        "Hormat kami,",
-        "Pengirim",
+        "Hormat Saya,",
+        `${name}`,
       ].join("\n")
     );
 
