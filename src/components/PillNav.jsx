@@ -2,11 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { gsap } from "gsap";
 
-/**
- * PILL NAV – layout & interaksi persis Figma:
- * [logo bulat kecil] [bar putih berisi: pills menu + CTA hijau]
- * Logo non-klik. Center absolut di container.
- */
 export default function PillNav({
   logo,
   logoAlt = "Logo",
@@ -25,24 +20,20 @@ export default function PillNav({
   ctaLabel = "Beli Sekarang",
 }) {
   const [open, setOpen] = useState(false);
-
-  // refs animasi
   const circleRefs = useRef([]);
   const tlRefs = useRef([]);
   const activeTweenRefs = useRef([]);
 
-  const logoRef = useRef(null);       // logo non-klik
-  const barRef = useRef(null);        // kapsul putih tengah
+  const logoRef = useRef(null);       
+  const barRef = useRef(null);        
   const burgerRef = useRef(null);
   const mobileRef = useRef(null);
 
-  // ukuran visual (match Figma)
-  const NAV_H = 50;   // tinggi unit bar
+  const NAV_H = 50;   
   const LOGO_BOX = 50;
   const LOGO_IMG = 50;
   const FONT = "15px";
 
-  /* -------------------- Layout + GSAP -------------------- */
   useEffect(() => {
     const layout = () => {
       circleRefs.current.forEach((circle) => {
@@ -50,7 +41,6 @@ export default function PillNav({
         const pill = circle.parentElement;
         const { width: w, height: h } = pill.getBoundingClientRect();
 
-        // geometri flood-circle
         const R = ((w * w) / 4 + h * h) / (2 * h);
         const D = Math.ceil(2 * R) + 2;
         const delta = Math.ceil(R - Math.sqrt(Math.max(0, R * R - (w * w) / 4))) + 1;
@@ -89,10 +79,8 @@ export default function PillNav({
     window.addEventListener("resize", onResize);
     if (document.fonts?.ready) document.fonts.ready.then(layout).catch(() => {});
 
-    // mobile dropdown default hidden
     if (mobileRef.current) gsap.set(mobileRef.current, { visibility: "hidden", opacity: 0, y: 10 });
 
-    // entry anim seperti demo
     if (initialLoadAnimation) {
       if (logoRef.current) {
         gsap.set(logoRef.current, { scale: 0 });
@@ -147,7 +135,6 @@ export default function PillNav({
     }
   };
 
-  // eksternal/hash – pakai <a>
   const isExternal = (href = "") =>
     href.startsWith("http") ||
     href.startsWith("//") ||
@@ -158,20 +145,14 @@ export default function PillNav({
 
   const isRouterLink = (href = "") => href && !isExternal(href);
 
-  // cegah reload/blank bila klik item yg sudah aktif
   const preventWhenActive = (e, href) => {
     if (activeHref === href) e.preventDefault();
   };
 
-  /* -------------------- RENDER -------------------- */
 
   return (
-    // wrapper pusat
     <div className="w-full flex justify-center">
-      {/* cluster tengah persis Figma: logo + kapsul bar (menu + CTA) */}
       <div className={`inline-flex items-center gap-3 px-2 md:px-0 ${className}`}>
-
-        {/* logo bulat kecil (NON-klik) */}
         <div
           ref={logoRef}
           aria-label="Logo"
@@ -186,7 +167,6 @@ export default function PillNav({
           />
         </div>
 
-        {/* kapsul putih berisi MENU + CTA */}
         <nav
           ref={barRef}
           aria-label="Primary"
@@ -194,11 +174,10 @@ export default function PillNav({
           style={{
             height: NAV_H,
             background: barBg,
-            borderColor: "#e6f7f3", // tipis hijau muda (sesuai Figma)
+            borderColor: "#e6f7f3", 
             boxShadow: "0 10px 28px rgba(2,18,8,0.08)",
           }}
         >
-          {/* MENU PILLS */}
           <ul
             role="menubar"
             className="list-none flex items-center m-0 py-[3px] pr-2"
@@ -236,7 +215,6 @@ export default function PillNav({
                     </span>
                   </span>
 
-                  {/* dot aktif kecil di bawah item */}
                   {isActive && (
                     <span
                       className="absolute left-1/2 -bottom-[6px] -translate-x-1/2 w-3 h-3 rounded-full z-[4]"
@@ -283,7 +261,6 @@ export default function PillNav({
             })}
           </ul>
 
-          {/* CTA hijau di kanan dalam bar */}
           {showCta && (
             <Link
               to={ctaHref}
@@ -299,8 +276,6 @@ export default function PillNav({
             </Link>
           )}
         </nav>
-
-        {/* burger untuk mobile (logo tetap kiri, burger kanan — bar putih disembunyikan) */}
         <button
           ref={burgerRef}
           onClick={toggle}
@@ -313,7 +288,6 @@ export default function PillNav({
         </button>
       </div>
 
-      {/* Dropdown mobile full width (margin 16) */}
       <div
         ref={mobileRef}
         className="md:hidden absolute left-4 right-4 mt-3 rounded-[26px] shadow-[0_12px_34px_rgba(0,0,0,0.14)] origin-top z-[999]"

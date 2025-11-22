@@ -1,4 +1,3 @@
-// src/components/Hero.jsx
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import AOS from "aos";
@@ -24,13 +23,8 @@ export default function Hero({ bgImage = "/gedung.png" }) {
       }}
       id="home"
     >
-      {/* Overlay gradasi elegan */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent sm:from-black/80 sm:via-black/50" />
-
-      {/* Overlay lapisan warna biru kehijauan lembut */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#00C4CC]/15 via-transparent to-transparent" />
-
-      {/* Konten */}
       <div className="relative z-10 w-full">
         <div
           className="max-w-screen-xl mx-auto px-6 sm:px-10 md:px-12 lg:px-16 py-24 sm:py-28 md:py-32"
@@ -42,7 +36,7 @@ export default function Hero({ bgImage = "/gedung.png" }) {
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              Welcome to
+              Selamat datang di
             </p>
 
             <h1
@@ -64,8 +58,7 @@ export default function Hero({ bgImage = "/gedung.png" }) {
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              Producing high-quality detergent and chemical solutions for
-              industrial and commercial needs.
+              Memproduksi deterjen dan larutan kimia berkualitas tinggi dengan formulasi berbahan alami untuk kebutuhan industri dan komersial.
             </p>
 
             <div
@@ -90,7 +83,6 @@ export default function Hero({ bgImage = "/gedung.png" }) {
         </div>
       </div>
 
-      {/* ======== Lengkungan bawah + Fade Gradient ======== */}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-[0]">
         <svg
           viewBox="0 0 1200 300"

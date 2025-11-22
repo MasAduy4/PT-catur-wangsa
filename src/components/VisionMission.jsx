@@ -1,4 +1,3 @@
-// src/components/VisionMission.jsx
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -11,7 +10,6 @@ export default function VisionMission() {
   return (
     <section className="relative bg-gradient-to-br from-white via-[#E8FAF7]/80 to-[#D8F8F5] py-16 md:py-20 font-[Poppins]">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
-        {/* Heading */}
         <div className="text-center mb-10" data-aos="fade-up">
           <h2 className="text-[#10474E] text-[28px] md:text-[34px] font-extrabold leading-tight">
             Visi &amp; Misi
@@ -19,9 +17,7 @@ export default function VisionMission() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Left Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8">
-            {/* Card Visi */}
             <div
               className="rounded-2xl p-6 text-center shadow-[0_8px_30px_rgba(0,0,0,0.05)] ring-1 ring-[#BFEFE9]/50 
                         bg-gradient-to-b from-[#F8FFFE] to-[#E8FAF7] transition-all duration-300"
@@ -45,7 +41,6 @@ export default function VisionMission() {
               </p>
             </div>
 
-            {/* Card Misi */}
             <div
               className="rounded-2xl p-6 text-center shadow-[0_8px_30px_rgba(0,0,0,0.05)] ring-1 ring-[#BFEFE9]/50 
                         bg-gradient-to-b from-[#F8FFFE] to-[#E8FAF7] transition-all duration-300"
@@ -69,7 +64,6 @@ export default function VisionMission() {
               </p>
             </div>
 
-            {/* Tagline */}
             <div
               className="sm:col-span-2 bg-[#E9F9F6] rounded-2xl p-4 text-center shadow-inner ring-1 ring-[#BFEFE9]/60"
               data-aos="fade-up"
@@ -81,7 +75,6 @@ export default function VisionMission() {
             </div>
           </div>
 
-          {/* Right Image */}
           <div
             className="rounded-[24px] overflow-hidden shadow-[0_18px_40px_rgba(0,0,0,0.12)] ring-1 ring-[#00B9BE]/10"
             data-aos="fade-left"

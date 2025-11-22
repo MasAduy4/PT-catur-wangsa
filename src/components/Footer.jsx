@@ -1,11 +1,9 @@
-// src/components/Footer.jsx
 import React from "react";
 
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-[#66b9b6] to-[#5b9b99] text-white font-[Poppins]">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 py-12 md:py-16">
-        {/* Header tengah */}
         <div className="text-center">
           <h3 className="font-extrabold tracking-wide text-[18px] sm:text-[20px] md:text-[22px]">
             PT CATUR WANGSA INDAH
@@ -14,7 +12,6 @@ export default function Footer() {
             Detergent &amp; Manufacturer
           </p>
 
-          {/* Garis tipis di tengah */}
           <div
             className="mt-3 flex items-center justify-center gap-2"
             aria-hidden="true"
@@ -25,9 +22,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Grid konten */}
         <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10 text-center md:text-left">
-          {/* Perusahaan */}
           <div>
             <h4 className="font-semibold text-[18px] mb-4">Perusahaan</h4>
             <ul className="space-y-2 text-white/95">
@@ -53,8 +48,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Produk */}
           <div>
             <h4 className="font-semibold text-[18px] mb-4">Produk</h4>
             <ul className="space-y-2 text-white/95">
@@ -80,8 +73,6 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-
-          {/* Sertifikat */}
           <div>
             <h4 className="font-semibold text-[18px] mb-4">Sertifikat</h4>
             <p className="text-white/90 text-sm mb-5">
@@ -90,7 +81,6 @@ export default function Footer() {
             </p>
 
             <div className="flex flex-col gap-4">
-              {/* Sertifikat 1 */}
               <article className="flex flex-col sm:flex-row sm:items-center gap-3 bg-white/10 p-4 rounded-lg shadow-sm hover:bg-white/15 transition">
                 <div className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-md mx-auto sm:mx-0">
                   <svg
@@ -141,8 +131,6 @@ export default function Footer() {
                   </svg>
                 </a>
               </article>
-
-              {/* Sertifikat 2 */}
               <article className="flex flex-col sm:flex-row sm:items-center gap-3 bg-white/10 p-4 rounded-lg shadow-sm hover:bg-white/15 transition">
                 <div className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-md mx-auto sm:mx-0">
                   <svg
@@ -208,8 +196,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
-
-      {/* Strip bawah */}
       <div className="text-center text-white/90 py-4 text-xs sm:text-sm border-t border-white/10">
         © {new Date().getFullYear()} PT Catur Wangsa Indah. All rights reserved.
       </div>

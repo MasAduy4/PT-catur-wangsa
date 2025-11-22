@@ -1,14 +1,8 @@
-// src/pages/ProductsPage.jsx
 import { useMemo, useState, useEffect } from "react";
 import LogoLoop from "../components/LogoLoop";
-
-/* ====== TAMBAHAN AOS ====== */
 import AOS from "aos";
 import "aos/dist/aos.css";
 
-/* ========================= */
-
- /* ===== DATA PRODUK (ditambah field description) ===== */
 const ALL_PRODUCTS = 
 [
   { id: 1,  name: "Detergent Bomber - Washing machines 800 gram",   category: "Detergent Bubuk", price: 12000,  rating: 5.0, img: "public/product/Bomber_WashingMachines.png",  isTrending: false,  createdAt: "2025-05-10", description: "Detergen bubuk khusus mesin cuci — cepat larut, mengangkat noda membandel, dan meninggalkan aroma segar. Hemat pemakaian, cocok untuk cucian keluarga sehari-hari." },
@@ -17,7 +11,7 @@ const ALL_PRODUCTS =
   { id: 4,  name: "Detergent Bubuk Fres Klin - 1 pcs",        category: "Detergent Bubuk", price: 10000, rating: 5.0, img: "public/product/Fresklin_FK1000.png", isTrending: true,  createdAt: "2025-08-15", description: "Kemasan besar ekonomis 610g — hemat dan kuat membersihkan, ideal untuk keluarga besar atau pencucian rutin. Cepat larut dan ramah mesin cuci." },
   { id: 5,  name: "Fresklin - Softener",         category: "Botol", price: 8500, rating: 5.0, img: "public/product/fresklin_softener.png",  isTrending: false,  createdAt: "2025-08-01", description: "Pelembut pakaian wangi bunga — melembutkan serat, mengurangi kusut, dan memberi aroma menenangkan. Isi 450ml, sempurna untuk hasil cucian yang lebih halus." },
   { id: 6,  name: "Clean Up - Detergen Cair",    category: "Botol", price: 8000, rating: 5.0, img: "public/product/cleanup_detergenCair.png",  isTrending: false,  createdAt: "2025-08-02", description: "Detergen cair serbaguna yang ampuh melawan noda dan minyak, namun lembut di tangan. Mudah dibilas dan praktis untuk pemakaian harian. Isi 450ml." },
-  { id: 7,  name: "Bomber - Wash dishes",        category: "Botol", price: 7000, rating: 5.0, img: "public/product/palem_cuciPiring.png",  isTrending: true, createdAt: "2025-07-24", description: "Cairan pencuci piring formula kuat yang cepat mengangkat lemak, mudah dibilas, dan lembut di kulit. Memberi hasil bersih dan wangi segar. Isi 450ml." },
+  { id: 7,  name: "Palem - Wash dishes",        category: "Botol", price: 7000, rating: 5.0, img: "public/product/palem_cuciPiring.png",  isTrending: true, createdAt: "2025-07-24", description: "Cairan pencuci piring formula kuat yang cepat mengangkat lemak, mudah dibilas, dan lembut di kulit. Memberi hasil bersih dan wangi segar. Isi 450ml." },
   { id: 8,  name: "Palem - Hand Soap",           category: "Botol", price: 7000, rating: 5.0, img: "public/product/palem_handsoap.png",  isTrending: false, createdAt: "2025-07-20", description: "Sabun tangan lembut dengan aroma menyegarkan — membersihkan secara higienis tanpa membuat kulit kering. Cocok untuk penggunaan sehari-hari. Isi 450ml." },
   { id: 9,  name: "Cemara - Pembersih Lantai",   category: "Botol", price: 6500, rating: 5.0, img: "public/product/cemara_pembersihLantai.png",  isTrending: false,  createdAt: "2025-09-01", description: "Pembersih lantai praktis yang efektif mengangkat kotoran dan noda membandel, meninggalkan permukaan berkilau dan aroma segar. Isi 450ml." },
   { id: 10, name: "Cemara - Fragrant Carbolic",  category: "Botol", price: 7000, rating: 5.0, img: "public/product/cemara_fragrantCarbol.png",  isTrending: false, createdAt: "2025-06-30", description: "Karbol wangi siap pakai untuk membersihkan dan mendisinfeksi toilet, kamar mandi, dan area umum — membunuh kuman sambil meninggalkan aroma bersih. Isi 450ml." },
@@ -37,16 +31,11 @@ const ALL_PRODUCTS =
   { id: 24, name: "Paket Bundling - Detergent Bomber & Fresklin Softener",                       category: "Paket", price: 17500, rating: 5.0, img: "public/product/Pake_Bundling2.png", isTrending: true, createdAt: "2025-07-28", description: "Paket premium berisi detergen Bomber dan pelembut Fresklin — kombinasi ideal untuk cucian yang bersih, wangi, dan terasa lembut." }
 ]
 
-
-
-
-/* ====== KARTU PRODUK (hanya tombol DETAIL pada hero) ====== */
 function ProductCard({ p, onOpenDetail }) {
   const src = (p.img || "/product.jpg").replace(/^public\//, "/");
 
   return (
     <div
-      /* ====== TAMBAHAN AOS: fade-up dengan delay berdasarkan id (ms) ====== */
       data-aos="fade-up"
       data-aos-delay={p.id * 40}
       data-aos-once="true"
@@ -81,7 +70,6 @@ function ProductCard({ p, onOpenDetail }) {
           <p className="text-sm text-slate-500">⭐ {p.rating}</p>
         </div>
 
-        {/* Hanya tombol Detail di hero */}
         <div className="mt-3 flex gap-2">
           <button
             className="flex-1 rounded-lg border border-slate-200 px-3 py-2.5 text-slate-700 hover:bg-slate-50"
@@ -95,14 +83,13 @@ function ProductCard({ p, onOpenDetail }) {
   );
 }
 
-/* ====== HALAMAN PRODUK DENGAN MODAL DETAIL ====== */
 export default function ProductsPage() {
   const [q, setQ] = useState("");
   const [category, setCategory] = useState("Semua");
   const [sort, setSort] = useState("standard");
   const [page, setPage] = useState(1);
 
-  const [selected, setSelected] = useState(null); // product yang sedang dibuka di modal
+  const [selected, setSelected] = useState(null); 
 
   const PER_PAGE = 12;
 
@@ -140,7 +127,6 @@ export default function ProductsPage() {
         rows = rows.slice().sort((a, b) => b.price - a.price);
         break;
       default:
-      // standard
     }
 
     return rows;
@@ -156,10 +142,8 @@ export default function ProductsPage() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  /* buka modal detail */
   const openDetail = (product) => {
     setSelected(product);
-    // disable scroll belakang saat modal terbuka
     document.body.style.overflow = "hidden";
   };
 
@@ -167,8 +151,6 @@ export default function ProductsPage() {
     setSelected(null);
     document.body.style.overflow = "";
   };
-
-  // tangani ESC untuk tutup modal
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === "Escape") closeDetail();
@@ -177,9 +159,7 @@ export default function ProductsPage() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  /* ====== TAMBAHAN AOS: inisialisasi/refresh AOS lokal ====== */
   useEffect(() => {
-    // inisialisasi AOS (aman jika App.jsx juga sudah inisialisasi)
     if (AOS && typeof AOS.init === "function") {
       AOS.init({
         duration: 700,
@@ -189,15 +169,11 @@ export default function ProductsPage() {
       });
     }
   }, []);
-
-  // refresh AOS setiap kali daftar item berubah supaya delay anim ter-baca AOS
   useEffect(() => {
     if (AOS && typeof AOS.refresh === "function") {
       AOS.refresh();
     }
   }, [pageItems, q, category, sort, page]);
-  /* ===================================================== */
-
   const marketplaceLogos = [
     { src: "/logo/shopee.png", alt: "Shopee", href: "https://shopee.co.id/sabunpalemoriginal", title: "Shopee", width: 192, height: 192 },
     { src: "/logo/tokopedia.png", alt: "Tokopedia", href: "https://tokopedia.link/mHWmzN105Xb", title: "Tokopedia", width: 192, height: 192 },
@@ -210,8 +186,6 @@ export default function ProductsPage() {
         <h1 className="text-3xl md:text-4xl font-extrabold text-emerald-800">Produk Kami</h1>
         <p className="mt-2 text-slate-600">Cari produk yang kamu mau, filter kategori, dan atur pengurutan.</p>
       </section>
-
-      {/* Toolbar */}
       <section className="max-w-7xl mx-auto px-4">
         <div className="rounded-2xl bg-white/70 backdrop-blur p-4 shadow ring-1 ring-black/5">
           <div className="grid gap-3 md:grid-cols-3">
@@ -260,8 +234,6 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
-
-      {/* GRID PRODUK */}
       <section className="max-w-7xl mx-auto px-4 py-6 md:py-10">
         {pageItems.length === 0 ? (
           <div className="text-center py-16 text-slate-500">Tidak ada produk yang sesuai.</div>
@@ -272,8 +244,6 @@ export default function ProductsPage() {
             ))}
           </div>
         )}
-
-        {/* PAGINATION */}
         {totalPages > 1 && (
           <div className="mt-8 flex items-center justify-center gap-2">
             <button onClick={() => changePage(page - 1)} className="px-3 py-2 rounded-lg border border-slate-200 bg-white hover:bg-slate-50 disabled:opacity-40" disabled={page === 1}>‹ Prev</button>
@@ -290,8 +260,6 @@ export default function ProductsPage() {
           </div>
         )}
       </section>
-
-      {/* CTA Marketplace */}
       <section className="pb-16">
         <div className="max-w-7xl mx-auto px-4">
           <div className="rounded-2xl bg-white shadow ring-1 ring-black/5 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
@@ -305,18 +273,14 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
-
-      {/* MODAL DETAIL PRODUK */}
       {selected && (
         <div
           aria-modal="true"
           role="dialog"
-          /* tambahkan anim AOS juga pada modal wrapper */
           data-aos="zoom-in"
           data-aos-once="true"
           className="fixed inset-0 z-50 flex items-center justify-center"
         >
-          {/* backdrop */}
           <div onClick={closeDetail} className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
           <div className="relative bg-white rounded-2xl shadow-xl max-w-4xl w-full mx-4 overflow-hidden">
             <div className="grid md:grid-cols-2">

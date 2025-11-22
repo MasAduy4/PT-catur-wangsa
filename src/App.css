@@ -1,4 +1,3 @@
-/* App.css minimal – hanya contoh, aman untuk dibiarkan kosong juga */
 #root {
-  isolation: isolate; /* biar z-index komponen aman */
+  isolation: isolate; 
 }

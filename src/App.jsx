@@ -1,4 +1,3 @@
-// src/App.jsx
 import { useEffect } from "react";
 import { Routes, Route, Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
@@ -17,40 +16,31 @@ import ProductsPage from "./pages/ProductsPage";
 import ContactPage from "./pages/ContactPage";
 
 
-/* -------------------- Page transition variants -------------------- */
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
   in: { opacity: 1, y: 0 },
   out: { opacity: 0, y: -20 },
 };
 
-/* -------------------- Scroll manager (top / #hash) -------------------- */
 function ScrollManager() {
   const location = useLocation();
 
   useEffect(() => {
-    // Jika ada hash -> scroll ke elemen terkait
     if (location.hash) {
       const id = location.hash;
       const tryScroll = () => {
         const el = document.querySelector(id);
         if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
       };
-      // langsung coba
       tryScroll();
-      // coba lagi sebentar (jaga-jaga jika elemen muncul sedikit terlambat)
       const t = setTimeout(tryScroll, 60);
       return () => clearTimeout(t);
     }
-
-    // Tanpa hash -> scroll ke atas
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [location.pathname, location.hash]);
 
   return null;
 }
-
-/* -------------------- Layout (Navbar + Footer + transition) -------------------- */
 function Layout() {
   const location = useLocation();
 
@@ -58,8 +48,6 @@ function Layout() {
     <div className="font-sans">
       <TopBar />
       <Navbar />
-
-      {/* Transisi untuk tiap halaman child route */}
       <AnimatePresence mode="wait">
         <motion.main
           key={location.pathname + location.hash}
@@ -77,12 +65,8 @@ function Layout() {
     </div>
   );
 }
-
-/* -------------------- App root -------------------- */
 export default function App() {
   const location = useLocation();
-
-  // Init AOS sekali
   useEffect(() => {
     AOS.init({
       duration: 700,
@@ -91,8 +75,6 @@ export default function App() {
       offset: 80,
     });
   }, []);
-
-  // Refresh AOS setiap ganti route (biar anim muncul lagi)
   useEffect(() => {
     AOS.refresh();
   }, [location.pathname, location.hash]);

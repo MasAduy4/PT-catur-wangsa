@@ -1,4 +1,3 @@
-// src/pages/ContactPage.jsx
 import { useState } from "react";
 
 export default function ContactPage() {
@@ -46,7 +45,6 @@ export default function ContactPage() {
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-[#E8FAF7] via-[#D4F4EE] to-[#E8FAF7] pt-32 md:pt-36 pb-16">
-      {/* CONTACT STRIP */}
       <section className="bg-white/80 backdrop-blur-sm shadow-sm rounded-2xl max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-8 md:py-10">
         <div className="flex flex-col items-center">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-y-6 gap-x-8 justify-items-center w-full">
@@ -78,19 +76,14 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-
-      {/* FORM + MAP */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 lg:px-12 py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
-          {/* Form */}
           <div className="rounded-2xl bg-white/80 backdrop-blur p-6 md:p-8 shadow-[0_10px_30px_rgba(2,18,8,0.06)]">
             <h2 className="text-xl md:text-2xl font-bold text-slate-800 mb-4">
               Hubungi Kami
             </h2>
             <FormCard />
           </div>
-
-          {/* Map + Info */}
           <aside className="rounded-2xl bg-white/80 backdrop-blur p-6 md:p-8 shadow-[0_10px_30px_rgba(2,18,8,0.06)] flex flex-col">
             <h3 className="text-lg md:text-xl font-semibold text-slate-800 mb-3">
               Lokasi Kami
@@ -145,10 +138,6 @@ export default function ContactPage() {
     </main>
   );
 }
-
-/* =========================
-   FORM CONTACT
-   ========================= */
 function FormCard() {
   const [name, setName] = useState("");
   const [fromEmail, setFromEmail] = useState("");

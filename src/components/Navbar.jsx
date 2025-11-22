@@ -13,7 +13,6 @@ export default function Navbar() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "auto";
-    // cegah overflow horizontal
     document.documentElement.style.overflowX = "hidden";
   }, [menuOpen]);
 
@@ -34,9 +33,7 @@ export default function Navbar() {
         isLight ? "bg-white shadow-md" : "bg-transparent"
       }`}
     >
-      {/* wrapper full width tapi dibatasi max screen */}
       <div className="max-w-screen-xl w-full mx-auto flex items-center justify-between h-[72px] px-4 sm:px-6 md:px-8">
-        {/* Logo */}
         <Link to="/" className="flex items-center shrink-0">
           <img
             src="/logo.png"
@@ -45,7 +42,6 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Hamburger (mobile only) */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           className={`md:hidden flex flex-col justify-between w-8 h-6 focus:outline-none ${
@@ -69,7 +65,6 @@ export default function Navbar() {
           ></span>
         </button>
 
-        {/* Menu Desktop */}
         <nav
           className={`hidden md:flex items-center space-x-10 font-[Quicksand] text-[15px] ${
             isLight ? "text-[#2f3b45]" : "text-white"
@@ -97,7 +92,6 @@ export default function Navbar() {
         </nav>
       </div>
 
-      {/* Backdrop gelap */}
       {menuOpen && (
         <div
           className="fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden z-[9998]"
@@ -105,7 +99,6 @@ export default function Navbar() {
         ></div>
       )}
 
-      {/* Drawer Menu Mobile */}
       <div
         className={`md:hidden fixed top-[72px] left-0 right-0 w-full bg-white shadow-lg rounded-b-xl z-[9999] transition-all duration-300 ${
           menuOpen

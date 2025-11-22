@@ -1,4 +1,3 @@
-// src/pages/AboutPage.jsx
 import AboutHero from "../components/AboutHero";
 import History from "../components/History";
 import VisionMission from "../components/VisionMission";

@@ -1,4 +1,3 @@
-// src/components/Hero.jsx
 import React, { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -16,20 +15,15 @@ export default function Hero({ bgImage = "/gedung.png" }) {
   return (
     <section
       id="home"
-      className="relative min-h-[110vh] md:min-h-[115vh] lg:min-h-[120vh] flex items-center overflow-hidden font-[Poppins]"
+      className="relative min-h-[105vh] overflow-hidden bg-transparent flex items-center"
       style={{
         backgroundImage: `linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 196, 204, 0.05) 85%), url(${bgImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      {/* Overlay gelap elegan kiri-ke-kanan */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-transparent" />
-
-      {/* Overlay lapisan teal lembut */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#00C4CC]/15 via-transparent to-transparent" />
-
-      {/* Konten tengah */}
       <div className="relative z-10 w-full">
         <div className="max-w-7xl mx-auto px-6 sm:px-10 md:px-12 lg:px-16">
           <div
@@ -58,7 +52,6 @@ export default function Hero({ bgImage = "/gedung.png" }) {
         </div>
       </div>
 
-      {/* Wave bawah dengan transisi halus */}
       <div className="absolute bottom-0 left-0 right-0 overflow-hidden leading-[0]">
         <svg
           viewBox="0 0 1200 300"

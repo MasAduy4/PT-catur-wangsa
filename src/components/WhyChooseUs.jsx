@@ -1,4 +1,3 @@
-// src/components/WhyChooseUs.jsx
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -17,7 +16,7 @@ export default function WhyChooseUs() {
     {
       img: "/why/Icon_jam.png",
       alt: "Ikon jam pengalaman",
-      title: "Sejak 1967",
+      title: "Sejak 1950",
       text: "Lebih dari 50 tahun pengalaman dalam industri sabun & deterjen.",
     },
     {
@@ -41,18 +40,14 @@ export default function WhyChooseUs() {
   ];
 
   return (
-    // WhyChooseUs.jsx
 <section className="relative py-16 md:py-20 lg:py-24 overflow-hidden bg-transparent font-[Poppins]">
 
-      {/* Accent Blur Background */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[#00C4CC]/10 blur-[180px] rounded-full opacity-50 pointer-events-none"></div>
-
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-14">
-        {/* ===== Heading Section ===== */}
         <div className="text-center mb-14" data-aos="fade-up">
-          <p className="text-[#00C4CC] font-semibold uppercase tracking-[3px] text-[13px] md:text-[14px] mb-2">
-            Keunggulan Kami
-          </p>
+          <span className="inline-block py-1 px-3 rounded-full bg-[#E0FAF8] text-[#0F6F72] text-sm font-semibold tracking-wider mb-4 border border-[#00B9BE]/20">
+            PERJALANAN KAMI
+          </span>
           <h2 className="text-[28px] sm:text-[36px] md:text-[42px] lg:text-[46px] font-extrabold leading-tight text-[#1B515A] drop-shadow-sm">
             Mengapa Memilih Kami?
           </h2>
@@ -61,8 +56,6 @@ export default function WhyChooseUs() {
             pengalaman, teknologi, dan kepercayaan yang telah terbukti.
           </p>
         </div>
-
-        {/* ===== Feature Grid ===== */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 lg:gap-10">
           {items.map((it, i) => (
             <article
@@ -73,7 +66,6 @@ export default function WhyChooseUs() {
               transform-gpu will-change-transform transition-transform duration-700 ease-out
               hover:-translate-y-3 hover:scale-[1.03] hover:shadow-[0_20px_45px_rgba(0,0,0,0.12)]"
             >
-              {/* Icon Wrapper */}
               <div className="mx-auto mb-6 h-20 w-20 md:h-24 md:w-24 rounded-3xl bg-gradient-to-br from-[#E0FAF8] to-[#D6F7F5] ring-1 ring-[#00C4CC]/30 flex items-center justify-center transition-transform duration-700 ease-out group-hover:scale-110">
                 <img
                   src={it.img}
@@ -82,13 +74,9 @@ export default function WhyChooseUs() {
                   loading="lazy"
                 />
               </div>
-
-              {/* Title */}
               <h3 className="font-semibold text-[#10474E] text-lg sm:text-xl md:text-[22px] mb-2 transition-colors duration-500 ease-out group-hover:text-[#00C4CC]">
                 {it.title}
               </h3>
-
-              {/* Text */}
               <p className="text-slate-600 text-[15px] sm:text-[16px] leading-relaxed font-light transition-colors duration-500 ease-out group-hover:text-slate-700">
                 {it.text}
               </p>
@@ -96,8 +84,6 @@ export default function WhyChooseUs() {
           ))}
         </div>
       </div>
-
-      {/* Decorative Soft Curve */}
       <div className="absolute top-0 left-0 right-0 h-[120px] bg-gradient-to-b from-[#E8FAF7]/40 to-transparent pointer-events-none" />
     </section>
   );

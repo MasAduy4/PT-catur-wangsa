@@ -1,18 +1,9 @@
-/* Tailwind v4 core */
 @import "tailwindcss";
-
-/* AOS (kalau kamu pakai animasinya) */
 @import "aos/dist/aos.css";
 
-/* UX kecil */
 html { scroll-behavior: smooth; }
-
-/* =============================== */
-/*           Base Styles           */
-/* =============================== */
 @layer base {
   html { @apply antialiased; }
-  /* Gradasi global lembut (aktif di semua halaman) */
   body {
     @apply text-slate-800;
     background:
@@ -23,12 +14,6 @@ html { scroll-behavior: smooth; }
   }
   ::selection { @apply bg-teal-200 text-slate-900; }
 }
-
-/* =============================== */
-/*     Custom utilities (v4 way)   */
-/* =============================== */
-
-/* Input standar (dipakai ContactPage, dll) */
 @utility field-input {
   @apply w-full h-11 rounded-xl px-4
          !bg-[#0b5f5f] text-white placeholder-white/80
@@ -36,7 +21,6 @@ html { scroll-behavior: smooth; }
          appearance-none;
 }
 
-/* --- Fix autofill Chrome/Safari yang ngecat putih --- */
 @layer base {
   input:-webkit-autofill,
   textarea:-webkit-autofill,
@@ -47,9 +31,6 @@ html { scroll-behavior: smooth; }
     transition: background-color 9999s ease-in-out 0s;
   }
 }
-
-/* (Opsional) Kalau mau bisa ON/OFF per halaman, pakai class ini di wrapper:
-   <div className="site-gradient min-h-screen">…</div> */
 @layer utilities {
   .site-gradient {
     background:

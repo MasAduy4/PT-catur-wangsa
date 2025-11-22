@@ -1,4 +1,3 @@
-// src/components/CustomerReviews.jsx
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -39,12 +38,9 @@ export default function CustomerReviews() {
       className="relative py-24 bg-gradient-to-b from-white via-[#E9FBF8]/70 to-[#F8FFFE] font-[Poppins] overflow-hidden"
       id="reviews"
     >
-      {/* background blur accent */}
       <div className="absolute top-[-200px] left-[-100px] w-[500px] h-[500px] bg-[#CFFAF4] blur-[150px] opacity-40" />
       <div className="absolute bottom-[-200px] right-[-100px] w-[600px] h-[600px] bg-[#BDF7EF] blur-[200px] opacity-40" />
-
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 text-center">
-        {/* heading */}
         <h2
           className="text-[30px] sm:text-[38px] md:text-[44px] font-extrabold text-[#0F6F72] mb-4"
           data-aos="fade-up"
@@ -59,7 +55,6 @@ export default function CustomerReviews() {
           Kami selalu berkomitmen memberikan produk terbaik untuk pelanggan kami. Inilah pengalaman mereka.
         </p>
 
-        {/* review cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {REVIEWS.map((r, i) => (
             <div
@@ -74,8 +69,6 @@ export default function CustomerReviews() {
                 className="h-30 w-30 rounded-full ring-4 ring-[#E9FBF8] shadow-md mb-4 object-cover"
               />
               <h3 className="font-semibold text-[#0F6F72] text-lg">{r.name}</h3>
-
-              {/* rating stars */}
               <div className="flex gap-1 justify-center mt-1 mb-4">
                 {[...Array(5)].map((_, idx) => (
                   <Star key={idx} size={18} className="text-yellow-400 fill-yellow-400" />
@@ -86,8 +79,6 @@ export default function CustomerReviews() {
             </div>
           ))}
         </div>
-
-        {/* soft bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-[120px] bg-gradient-to-t from-white via-transparent to-transparent pointer-events-none" />
       </div>
     </section>

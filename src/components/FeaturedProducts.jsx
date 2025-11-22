@@ -1,4 +1,3 @@
-// src/components/FeaturedProducts.jsx
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -15,13 +14,9 @@ export default function FeaturedProducts() {
 
   return (
     <>
-      {/* ========== Section 1: Sabun Palem ========== */}
 <section className="relative bg-white font-[Poppins] overflow-hidden">
-  {/* Latar belakang halus */}
   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#F7FFFE] via-white to-[#E9FBF8]/40 pointer-events-none" />
-
   <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-32 grid md:grid-cols-2 gap-10 items-center">
-    {/* Gambar di mobile muncul dulu, di desktop tetap kanan */}
     <div
       data-aos="fade-left"
       className="relative flex justify-center md:justify-end order-1 md:order-2"
@@ -41,9 +36,6 @@ export default function FeaturedProducts() {
       />
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[70%] h-[25px] bg-black/10 blur-[12px] rounded-full" />
     </div>
-
-
-          {/* Teks di mobile setelah gambar */}
           <div
             data-aos="fade-right"
             className="order-2 md:order-1 text-center md:text-left z-10"
@@ -66,10 +58,8 @@ export default function FeaturedProducts() {
         </div>
       </section>
 
-      {/* ========== Section 2: Keunggulan Produk ========== */}
       <section className="relative bg-gradient-to-b from-white via-[#E9FBF8] to-white overflow-hidden font-[Poppins]">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
-          {/* Gambar dulu di mobile */}
           <div
             data-aos="fade-left"
             className="relative flex justify-center md:justify-end order-1 md:order-2"
@@ -89,7 +79,6 @@ export default function FeaturedProducts() {
             <div className="absolute bottom-6 left-1/2 -translate-x-1/2 w-[75%] h-[28px] bg-black/10 blur-[14px] rounded-full" />
           </div>
 
-          {/* Teks setelah gambar di mobile */}
           <div
             className="order-2 md:order-1 space-y-8 text-center md:text-left"
             data-aos="fade-right"
