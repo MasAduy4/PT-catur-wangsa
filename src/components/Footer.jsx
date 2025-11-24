@@ -107,7 +107,7 @@ export default function Footer() {
                 </div>
 
                 <a
-                  href="public/sertif/Sertifikat SJH BPJH .pdf"
+                  href="/sertif/Sertifikat SJH BPJH .pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="mt-2 sm:mt-0 inline-flex items-center justify-center gap-1 px-3 py-1.5 bg-white/10 border border-white/20 rounded-md text-sm hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
@@ -168,7 +168,7 @@ export default function Footer() {
                 </div>
 
                 <a
-                  href="public/sertif/Sertifikat CPPKRTB.pdf"
+                  href="/sertif/Sertifikat CPPKRTB.pdf"
                   target="_blank"
                   rel="noreferrer"
                   className="mt-2 sm:mt-0 inline-flex items-center justify-center gap-1 px-3 py-1.5 bg-white/10 border border-white/20 rounded-md text-sm hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
