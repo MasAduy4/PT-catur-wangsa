@@ -35,7 +35,7 @@ export default function CustomerReviews() {
 
   return (
     <section
-      className="relative py-24 bg-gradient-to-b from-white via-[#E9FBF8]/70 to-[#F8FFFE] font-[Poppins] overflow-hidden"
+      className="relative py-24 bg-gradient-to-b from-white via-[#E9FBF8]/70 to-[#F8FFFE] overflow-hidden"
       id="reviews"
     >
       <div className="absolute top-[-200px] left-[-100px] w-[500px] h-[500px] bg-[#CFFAF4] blur-[150px] opacity-40" />

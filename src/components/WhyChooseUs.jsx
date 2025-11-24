@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
   ];
 
   return (
-<section className="relative py-16 md:py-20 lg:py-24 overflow-hidden bg-transparent font-[Poppins]">
+<section className="relative py-16 md:py-20 lg:py-24 overflow-hidden bg-transparent">
 
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-[#00C4CC]/10 blur-[180px] rounded-full opacity-50 pointer-events-none"></div>
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 lg:px-14">

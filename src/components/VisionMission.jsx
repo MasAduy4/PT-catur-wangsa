@@ -8,7 +8,7 @@ export default function VisionMission() {
   }, []);
 
   return (
-    <section className="relative bg-gradient-to-br from-white via-[#E8FAF7]/80 to-[#D8F8F5] py-16 md:py-20 font-[Poppins]">
+    <section className="relative bg-gradient-to-br from-white via-[#E8FAF7]/80 to-[#D8F8F5] py-16 md:py-20">
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="text-center mb-10" data-aos="fade-up">
           <h2 className="text-[#10474E] text-[28px] md:text-[34px] font-extrabold leading-tight">

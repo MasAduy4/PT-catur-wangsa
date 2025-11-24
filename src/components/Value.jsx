@@ -38,7 +38,7 @@ export default function Value({
   return (
     <section
       id="values"
-      className="py-16 md:py-20 bg-gradient-to-b from-white via-[#E8FAF7]/80 to-[#D9F4F0]/70 font-[Poppins]"
+      className="py-16 md:py-20 bg-gradient-to-b from-white via-[#E8FAF7]/80 to-[#D9F4F0]/70"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10">
         <div className="text-center mb-10" data-aos="fade-up">

@@ -16,7 +16,7 @@ export default function ProductionVideo() {
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-10 flex flex-col items-center text-center">
         <h2
-          className="text-3xl md:text-4xl font-extrabold text-[#10474E] mt-8 font-[Poppins] z-10"
+          className="text-3xl md:text-4xl font-extrabold text-[#10474E] mt-8 z-10"
           data-aos="fade-up"
         >
           Bagaimana Produk Kami Dibuat

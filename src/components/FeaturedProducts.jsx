@@ -14,7 +14,7 @@ export default function FeaturedProducts() {
 
   return (
     <>
-<section className="relative bg-white font-[Poppins] overflow-hidden">
+<section className="relative bg-white overflow-hidden">
   <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#F7FFFE] via-white to-[#E9FBF8]/40 pointer-events-none" />
   <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-32 grid md:grid-cols-2 gap-10 items-center">
     <div
@@ -58,7 +58,7 @@ export default function FeaturedProducts() {
         </div>
       </section>
 
-      <section className="relative bg-gradient-to-b from-white via-[#E9FBF8] to-white overflow-hidden font-[Poppins]">
+      <section className="relative bg-gradient-to-b from-white via-[#E9FBF8] to-white overflow-hidden">
         <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
           <div
             data-aos="fade-left"

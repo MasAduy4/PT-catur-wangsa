@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#66b9b6] to-[#5b9b99] text-white font-[Poppins]">
+    <footer className="bg-gradient-to-b from-[#66b9b6] to-[#5b9b99] text-white">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 md:px-10 py-12 md:py-16">
         <div className="text-center">
           <h3 className="font-extrabold tracking-wide text-[18px] sm:text-[20px] md:text-[22px]">
