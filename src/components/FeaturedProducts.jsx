@@ -22,7 +22,7 @@ export default function FeaturedProducts() {
       className="relative flex justify-center md:justify-end order-1 md:order-2"
     >
       <img
-        src="public/detergen bubuk rev.jpg"
+        src="/detergen bubuk rev.jpg"
         alt="Sabun Palem"
         className="
           w-[340px] sm:w-[400px] md:w-[480px] lg:w-[520px]
@@ -65,7 +65,7 @@ export default function FeaturedProducts() {
             className="relative flex justify-center md:justify-end order-1 md:order-2"
           >
            <img
-            src="public/produkpalem.jpeg"
+            src="/produkpalem.jpeg"
             alt="Produk Palem"
             className="
             w-[340px] sm:w-[400px] md:w-[480px] lg:w-[520px]
